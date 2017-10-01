@@ -5,6 +5,9 @@ This is a standard class library where you can call open weather map to get the 
 
 This library currently supports getting Weather by Zipcode, City name, or city id
 
+
+
+
 You can contribute to the project in 3 ways
 
 The first and easiest is to add a issue that reports a bug or requests a new feature

@@ -5,7 +5,9 @@ VisualStudioVersion = 15.0.26730.16
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpenWeatherMap.Standard", "OpenWeatherMap.Standard\OpenWeatherMap.Standard.csproj", "{F2DC58D5-D75E-47F9-815D-18454475387D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenWeatherMap.Standard.Tests", "OpenWeatherMap.Standard.Tests\OpenWeatherMap.Standard.Tests.csproj", "{A02D96B0-3503-496E-9F92-EC193A8DB427}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpenWeatherMap.Standard.Tests", "OpenWeatherMap.Standard.Tests\OpenWeatherMap.Standard.Tests.csproj", "{A02D96B0-3503-496E-9F92-EC193A8DB427}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenWeatherMap.Standard.Sample", "OpenWeatherMap.Standard.Sample\OpenWeatherMap.Standard.Sample.csproj", "{17BDADF4-1DD8-42CA-951B-B504A2F1B7CC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{A02D96B0-3503-496E-9F92-EC193A8DB427}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A02D96B0-3503-496E-9F92-EC193A8DB427}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A02D96B0-3503-496E-9F92-EC193A8DB427}.Release|Any CPU.Build.0 = Release|Any CPU
+		{17BDADF4-1DD8-42CA-951B-B504A2F1B7CC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{17BDADF4-1DD8-42CA-951B-B504A2F1B7CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{17BDADF4-1DD8-42CA-951B-B504A2F1B7CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{17BDADF4-1DD8-42CA-951B-B504A2F1B7CC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

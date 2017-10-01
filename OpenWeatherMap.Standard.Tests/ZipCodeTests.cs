@@ -27,6 +27,18 @@ namespace OpenWeatherMap.Standard.Tests
             var fake = A.Fake<IRestService>();
             A.CallTo(() => fake.GetAsync("http://api.openweathermap.org/data/2.5/weather?zip=32927,USA&appid=UnitTest&units=Standard")).Returns(Task.FromResult(expect));
             var weather = new OpenWeatherMap.Standard.Forecast(fake);
+
+            string actual = weather.GetWeatherDataByZipAsync("UnitTest", "32927", "USA", WeatherUnits.Standard).Result.weather[0].description;
+            Assert.AreEqual("few clouds", actual);
+        }
+
+        [TestMethod]
+        public void TestUrlCreation()
+        {
+            var fake = A.Fake<IRestService>();
+            A.CallTo(() => fake.GetAsync("http://api.openweathermap.org/data/2.5/weather?zip=32927,USA&appid=UnitTest&units=Standard")).Returns(Task.FromResult(expect));
+            var weather = new OpenWeatherMap.Standard.Forecast(fake);
+
             string actual = weather.GetWeatherDataByZipAsync("UnitTest", "32927", "USA", WeatherUnits.Standard).Result.weather[0].description;
             Assert.AreEqual("few clouds", actual);
         }

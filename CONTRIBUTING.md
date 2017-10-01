@@ -1,4 +1,4 @@
-#You can contribute to the project in 3 ways
+# You can contribute to the project in 3 ways
 
 * Add a issue that reports a bug or requests a new feature
 

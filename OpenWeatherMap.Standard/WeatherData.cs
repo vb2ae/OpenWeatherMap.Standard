@@ -1,23 +1,33 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 
 namespace OpenWeatherMap.Standard
 {
     public class WeatherData
     {
-        public Coord coord { get; set; }
-        public Weather[] weather { get; set; }
-        public string _base { get; set; }
-        public Main main { get; set; }
-        public int visibility { get; set; }
-        public Wind wind { get; set; }
-        public Clouds clouds { get; set; }
-        public int dt { get; set; }
-        public Sys sys { get; set; }
-        public int id { get; set; }
-        public string name { get; set; }
-        public int cod { get; set; }
+        [JsonProperty("coord")]
+        public Coordinates Coordinates { get; set; }
+        [JsonProperty("weather")]
+        public Weather[] Weathers { get; set; }
+        [JsonProperty("_base")]
+        public string Base { get; set; }
+        [JsonProperty("main")]
+        public WeatherDayInfo WeatherDayInfo { get; set; }
+        [JsonProperty("visibility")]
+        public int Visibility { get; set; }
+        public Wind Wind { get; set; }
+        public Clouds Clouds { get; set; }
+        [JsonConverter(typeof(UnixDateTimeConverter))]
+        public DateTime Dt { get; set; }
+        [JsonProperty("sys")]
+        public DayInfo DayInfo { get; set; }
+        public int Id { get; set; }
+        public string Name { get; set; }
+        [JsonProperty("cod")]
+        public int HttpStatusCode { get; set; }
     }
 
 }

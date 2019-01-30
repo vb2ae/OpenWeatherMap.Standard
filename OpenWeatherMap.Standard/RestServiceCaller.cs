@@ -6,20 +6,14 @@ using System.Threading.Tasks;
 
 namespace OpenWeatherMap.Standard
 {
-    class RestServiceCaller : IRestService
+    internal class RestServiceCaller : IRestService
     {
-        HttpClient http = new HttpClient();
+        private static HttpClient httpClient = new HttpClient();
 
         public async Task<WeatherData> GetAsync(string url)
         {
-            WeatherData weather = null;
-
-            HttpClient http = new HttpClient();
-            string json = "";
-            json = await http.GetStringAsync(url);
-            weather = Newtonsoft.Json.JsonConvert.DeserializeObject<WeatherData>(json);
-
-            return weather;
+            var json = await httpClient.GetStringAsync(url);
+            return Newtonsoft.Json.JsonConvert.DeserializeObject<WeatherData>(json);
         }
     }
 }

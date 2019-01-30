@@ -14,7 +14,7 @@ namespace OpenWeatherMap.Standard.Tests
 ""base"":""stations"",
 ""WeatherDayInfo"":{""Temperature"":76.37,""Pressure"":1014,""Humidity"":83,""MinimumTemperature"":73.4,""MaximumTemperature"":78.8},
 ""Visibility"":16093,""wind"":{""speed"":5.82,""deg"":340},
-""clouds"":{""all"":20},""Dt"":1505642280,
+""clouds"":{""all"":20},""AcquisitionDateTime"":1505642280,
 ""DayInfo"":{""type"":1,""Id"":643,""message"":0.0038,""country"":""US"",""sunrise"":1505646573,""sunset"":1505690690},""Id"":0,""Name"":""Cocoa"",""HttpStatusCode"":200}";
 
         private readonly WeatherData expected;

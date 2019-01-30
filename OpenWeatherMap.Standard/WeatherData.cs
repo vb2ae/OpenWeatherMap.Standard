@@ -20,8 +20,8 @@ namespace OpenWeatherMap.Standard
         public int Visibility { get; set; }
         public Wind Wind { get; set; }
         public Clouds Clouds { get; set; }
-        [JsonConverter(typeof(UnixDateTimeConverter))]
-        public DateTime Dt { get; set; }
+        [JsonConverter(typeof(UnixDateTimeConverter)), JsonProperty("dt")]
+        public DateTime AcquisitionDateTime { get; set; }
         [JsonProperty("sys")]
         public DayInfo DayInfo { get; set; }
         public int Id { get; set; }

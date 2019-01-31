@@ -1,34 +1,37 @@
-﻿using FakeItEasy;
+﻿using System.Threading.Tasks;
+using FakeItEasy;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Newtonsoft.Json;
 
 namespace OpenWeatherMap.Standard.Tests
 {
     [TestClass]
     public class ZipCodeTests
     {
+        private const string SampleCloudyJsonData = @"{""coord"":{""Longitude"":-80.8,""Latitude"":28.46},
+""weather"":[{""Id"":801,""WeatherDayInfo"":""Clouds"",
+""Description"":""few clouds"",""Icon"":""02n""}],
+""base"":""stations"",
+""WeatherDayInfo"":{""Temperature"":76.37,""Pressure"":1014,""Humidity"":83,""MinimumTemperature"":73.4,""MaximumTemperature"":78.8},
+""Visibility"":16093,""wind"":{""speed"":5.82,""deg"":340},
+""clouds"":{""all"":20},""AcquisitionDateTime"":1505642280,
+""DayInfo"":{""type"":1,""Id"":643,""message"":0.0038,""country"":""US"",""sunrise"":1505646573,""sunset"":1505690690},""Id"":0,""Name"":""Cocoa"",""HttpStatusCode"":200}";
 
-
-        string cloudy = "{\"coord\":{\"lon\":-80.8,\"lat\":28.46},\"weather\":[{\"id\":801,\"main\":\"Clouds\",\"description\":\"few clouds\",\"icon\":\"02n\"}],\"base\":\"stations\",\"main\":{\"temp\":76.37,\"pressure\":1014,\"humidity\":83,\"temp_min\":73.4,\"temp_max\":78.8},\"visibility\":16093,\"wind\":{\"speed\":5.82,\"deg\":340},\"clouds\":{\"all\":20},\"dt\":1505642280,\"sys\":{\"type\":1,\"id\":643,\"message\":0.0038,\"country\":\"US\",\"sunrise\":1505646573,\"sunset\":1505690690},\"id\":0,\"name\":\"Cocoa\",\"cod\":200}";
-        WeatherData expect = null;
+        private readonly WeatherData expected;
 
         public ZipCodeTests()
         {
-            expect = Newtonsoft.Json.JsonConvert.DeserializeObject<WeatherData>(cloudy);
+            expected = JsonConvert.DeserializeObject<WeatherData>(SampleCloudyJsonData);
         }
 
         [TestMethod]
         public void TestCloudy()
         {
             var fake = A.Fake<IRestService>();
-            A.CallTo(() => fake.GetAsync("http://api.openweathermap.org/data/2.5/weather?zip=32927,USA&appid=UnitTest&units=Standard")).Returns(Task.FromResult(expect));
-            var weather = new OpenWeatherMap.Standard.Forecast(fake);
+            A.CallTo(() => fake.GetAsync("http://api.openweathermap.org/data/2.5/weather?zip=32927,USA&appid=UnitTest&units=Standard")).Returns(Task.FromResult(expected));
+            var weather = new Forecast(fake);
 
-            string actual = weather.GetWeatherDataByZipAsync("UnitTest", "32927", "USA", WeatherUnits.Standard).Result.weather[0].description;
+            var actual = weather.GetWeatherDataByZipAsync("UnitTest", "32927", "USA", WeatherUnits.Standard).Result.Weathers[0].Description;
             Assert.AreEqual("few clouds", actual);
         }
 
@@ -36,10 +39,10 @@ namespace OpenWeatherMap.Standard.Tests
         public void TestUrlCreation()
         {
             var fake = A.Fake<IRestService>();
-            A.CallTo(() => fake.GetAsync("http://api.openweathermap.org/data/2.5/weather?zip=32927,USA&appid=UnitTest&units=Standard")).Returns(Task.FromResult(expect));
-            var weather = new OpenWeatherMap.Standard.Forecast(fake);
+            A.CallTo(() => fake.GetAsync("http://api.openweathermap.org/data/2.5/weather?zip=32927,USA&appid=UnitTest&units=Standard")).Returns(Task.FromResult(expected));
+            var weather = new Forecast(fake);
 
-            string actual = weather.GetWeatherDataByZipAsync("UnitTest", "32927", "USA", WeatherUnits.Standard).Result.weather[0].description;
+            var actual = weather.GetWeatherDataByZipAsync("UnitTest", "32927", "USA", WeatherUnits.Standard).Result.Weathers[0].Description;
             Assert.AreEqual("few clouds", actual);
         }
     }

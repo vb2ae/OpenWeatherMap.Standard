@@ -9,17 +9,16 @@ namespace OpenWeatherMap.Standard
 {
     public class Forecast
     {
-        IRestService service = null;
+        private IRestService service = new RestServiceCaller();
+
+        public Forecast()
+        {
+            
+        }
         public Forecast(IRestService rest)
         {
             service = rest;
         }
-
-        public Forecast()
-        {
-            service = new RestServiceCaller();
-        }
-
         private string GetWeatherDataByZipUrl(string appId, string zipCode, string countryCode, WeatherUnits units)
         {
             return $"http://api.openweathermap.org/data/2.5/weather?zip={zipCode},{countryCode}&appid={appId}&units={units.ToString()}";
@@ -32,55 +31,46 @@ namespace OpenWeatherMap.Standard
 
         private string GetWeatherDataByCityIdUrl(string appId, int cityId, WeatherUnits units)
         {
-            return $"http://api.openweathermap.org/data/2.5/weather?id={cityId}&appid={appId}&units={units.ToString()}";
+            return $"http://api.openweathermap.org/data/2.5/weather?Id={cityId}&appid={appId}&units={units.ToString()}";
         }
 
         public async Task<WeatherData> GetWeatherDataByZipAsync(string appId, string zipCode, string countryCode = "us", WeatherUnits units = WeatherUnits.Standard)
         {
-            WeatherData weather = null;
             try
             {
                 string url = GetWeatherDataByZipUrl(appId, zipCode, countryCode, units);
-                weather = await service.GetAsync(url);
+                return await service.GetAsync(url);
             }
-            catch(Exception ex)
+            catch
             {
-                weather = null;
+                return null;
             }
-
-            return weather;
         }
 
         public async Task<WeatherData> GetWeatherDataByCityNameAsync(string appId, string cityName, string countryCode = "us", WeatherUnits units = WeatherUnits.Standard)
         {
-            WeatherData weather = null;
             try
             {
                 string url = GetWeatherDataByCityNameUrl(appId, cityName, countryCode, units);
-                weather = await service.GetAsync(url);
+                return await service.GetAsync(url);
             }
-            catch(Exception ex)
+            catch
             {
-                weather = null;
+                return null;
             }
-
-            return weather;
         }
 
         public async Task<WeatherData> GetWeatherDataByCityIdAsync(string appId, int cityId, WeatherUnits units = WeatherUnits.Standard)
         {
-            WeatherData weather = null;
             try
             {
                 string url = GetWeatherDataByCityIdUrl(appId, cityId, units);
-                weather = await service.GetAsync(url);
+                return await service.GetAsync(url);
             }
             catch
             {
-                weather = null;
+                return null;
             }
-
-            return weather;
         }
 
     }

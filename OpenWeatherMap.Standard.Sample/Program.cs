@@ -3,14 +3,14 @@ using System.Threading.Tasks;
 
 namespace OpenWeatherMap.Standard.Sample
 {
-    class Program
+    internal class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             string key = "yourkeygoeshere";
             Forecast forecast = new Forecast();
             WeatherData data = null;
-            Task getWeather = Task.Run(async () => { data = await forecast.GetWeatherDataByZipAsync(key, "32927", "us", WeatherUnits.metric); });
+            Task getWeather = Task.Run(async () => { data = await forecast.GetWeatherDataByZipAsync(key, "32927", "us", WeatherUnits.Metric); });
             getWeather.Wait();
 
             WeatherData dataCity = null;
@@ -21,7 +21,7 @@ namespace OpenWeatherMap.Standard.Sample
             WeatherData dataId = null;
             Task getWeatherId = Task.Run(async () => { dataId = await forecast.GetWeatherDataByCityIdAsync(key, 4151440); });
             getWeatherId.Wait();
-            Console.WriteLine(dataCity.weather[0].description);
+            Console.WriteLine(dataCity.Weathers[0].Description);
         }
     }
 }

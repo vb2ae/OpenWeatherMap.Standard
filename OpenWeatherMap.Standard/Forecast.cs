@@ -26,7 +26,19 @@ namespace OpenWeatherMap.Standard
 
         private string GetWeatherDataByCityNameUrl(string appId, string cityName, string countryCode, WeatherUnits units)
         {
-            return $"http://api.openweathermap.org/data/2.5/weather?q={cityName},{countryCode}&appid={appId}&units={units.ToString()}";
+            if (!string.IsNullOrEmpty(countryCode))
+            {
+                return $"http://api.openweathermap.org/data/2.5/weather?q={cityName},{countryCode}&appid={appId}&units={units.ToString()}";
+            }
+            else
+            {
+                return GetWeatherDataByCityNameUrl(appId, cityName, units);
+            }
+        }
+
+        private string GetWeatherDataByCityNameUrl(string appId, string cityName, WeatherUnits units)
+        {
+            return $"http://api.openweathermap.org/data/2.5/weather?q={cityName}&appid={appId}&units={units.ToString()}";
         }
 
         private string GetWeatherDataByCityIdUrl(string appId, int cityId, WeatherUnits units)
@@ -47,7 +59,7 @@ namespace OpenWeatherMap.Standard
             }
         }
 
-        public async Task<WeatherData> GetWeatherDataByCityNameAsync(string appId, string cityName, string countryCode = "us", WeatherUnits units = WeatherUnits.Standard)
+        public async Task<WeatherData> GetWeatherDataByCityNameAsync(string appId, string cityName, string countryCode="", WeatherUnits units = WeatherUnits.Standard)
         {
             try
             {

@@ -35,12 +35,4 @@ steps:
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
 
-  - task: CopyFiles@2
-    displayName: 'Copy Files to: $(Build.StagingDirectory)/Nuget'
-    inputs:
-            SourceFolder: "$(solution)"
-            Contents: Web.token.config
-            TargetFolder: "$(Build.StagingDirectory)/Nuget"
-            CleanTargetFolder: 'false'
-            OverWrite: 'false'
-            flattenFolders: 'false'
+

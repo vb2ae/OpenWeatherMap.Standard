@@ -31,9 +31,7 @@ steps:
     configuration: '$(buildConfiguration)'
 
 - task: VSTest@2
-  inputs:
-    #testSelector: 'testAssemblies' 
-    #testAssemblyVer2: '**\*NUnit.dll' 
+  inputs: 
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
 

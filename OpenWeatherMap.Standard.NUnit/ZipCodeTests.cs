@@ -1,11 +1,12 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using FakeItEasy;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Newtonsoft.Json;
+using NUnit.Framework;
 
-namespace OpenWeatherMap.Standard.Tests
+namespace OpenWeatherMap.Standard.NUnit
 {
-    [TestClass]
+    [TestFixture()]
     public class ZipCodeTests
     {
         private const string SampleCloudyJsonData = @"{""coord"":{""Longitude"":-80.8,""Latitude"":28.46},
@@ -24,7 +25,7 @@ namespace OpenWeatherMap.Standard.Tests
             expected = JsonConvert.DeserializeObject<WeatherData>(SampleCloudyJsonData);
         }
 
-        [TestMethod]
+        [Test()]
         public void TestCloudy()
         {
             var fake = A.Fake<IRestService>();
@@ -35,7 +36,7 @@ namespace OpenWeatherMap.Standard.Tests
             Assert.AreEqual("few clouds", actual);
         }
 
-        [TestMethod]
+        [Test()]
         public void TestUrlCreation()
         {
             var fake = A.Fake<IRestService>();

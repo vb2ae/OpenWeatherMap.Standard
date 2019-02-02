@@ -38,7 +38,7 @@ steps:
 - task: NuGetCommand@2
   inputs:
     command: pack
-    versioningScheme: byPrereleaseNumber
+    versioningScheme: ByEnvVar
     majorVersion: '$(Major)'
     minorVersion: '$(Minor)'
     patchVersion: '$(Patch)'

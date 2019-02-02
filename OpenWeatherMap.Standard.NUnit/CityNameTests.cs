@@ -4,7 +4,7 @@ using FakeItEasy;
 using Newtonsoft.Json;
 using NUnit.Framework;
 
-namespace OpenWeatherMap.Standard.NUnit
+namespace OpenWeatherMap.Standard.Test
 {
     [TestFixture()]
     public class CityNameTests

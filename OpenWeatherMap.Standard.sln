@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpenWeatherMap.Standard", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenWeatherMap.Standard.Sample", "OpenWeatherMap.Standard.Sample\OpenWeatherMap.Standard.Sample.csproj", "{17BDADF4-1DD8-42CA-951B-B504A2F1B7CC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenWeatherMap.Standard.NUnit", "OpenWeatherMap.Standard.NUnit\OpenWeatherMap.Standard.NUnit.csproj", "{8ABE787B-E257-417C-AC7C-EF0FF0D0EAEB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenWeatherMap.Standard.Test", "OpenWeatherMap.Standard.NUnit\OpenWeatherMap.Standard.Test.csproj", "{8ABE787B-E257-417C-AC7C-EF0FF0D0EAEB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

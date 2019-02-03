@@ -66,7 +66,7 @@ namespace OpenWeatherMap.Standard
                 string url = GetWeatherDataByCityNameUrl(appId, cityName, countryCode, units);
                 return await service.GetAsync(url);
             }
-            catch
+            catch(Exception ex)
             {
                 return null;
             }

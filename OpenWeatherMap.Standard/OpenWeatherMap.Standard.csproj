@@ -11,10 +11,14 @@
     <PackageProjectUrl>https://github.com/vb2ae/OpenWeatherMap.Standard/</PackageProjectUrl>
     <RepositoryUrl>https://github.com/vb2ae/OpenWeatherMap.standard</RepositoryUrl>
     <RepositoryType>GIT</RepositoryType>
+    <PackOnBuild>true</PackOnBuild>
+    <PackageVersion>0.6.0</PackageVersion>
+    <Authors>Ken Tucker </Authors>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="12.0.1" />
+    <PackageReference Include="NuGet.Build.Packaging" Version="0.2.0" />
   </ItemGroup>
 
 </Project>

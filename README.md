@@ -18,3 +18,5 @@ This library currently supports getting Weather by Zipcode, City name, or city i
 * Issue a pull request that fixes a bug or adds a new feature.
 
 If your pull request is accepted I will add you on as a contributer
+
+

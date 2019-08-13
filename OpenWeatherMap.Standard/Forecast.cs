@@ -43,7 +43,7 @@ namespace OpenWeatherMap.Standard
 
         private string GetWeatherDataByCityIdUrl(string appId, int cityId, WeatherUnits units)
         {
-            return $"http://api.openweathermap.org/data/2.5/weather?Id={cityId}&appid={appId}&units={units.ToString()}";
+            return $"http://api.openweathermap.org/data/2.5/weather?id={cityId}&appid={appId}&units={units.ToString()}";
         }
 
         public async Task<WeatherData> GetWeatherDataByZipAsync(string appId, string zipCode, string countryCode = "us", WeatherUnits units = WeatherUnits.Standard)

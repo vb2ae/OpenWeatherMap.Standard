@@ -21,7 +21,7 @@ namespace OpenWeatherMap.Standard.Test
         public void TestCloudy()
         {
             var fake = A.Fake<IRestService>();
-            A.CallTo(() => fake.GetAsync("http://api.openweathermap.org/data/2.5/weather?Id=1234&appid=UnitTest&units=Standard")).Returns(Task.FromResult(expected));
+            A.CallTo(() => fake.GetAsync("http://api.openweathermap.org/data/2.5/weather?id=1234&appid=UnitTest&units=Standard")).Returns(Task.FromResult(expected));
             var weather = new Forecast(fake);
             string actual = weather.GetWeatherDataByCityIdAsync("UnitTest", 1234, WeatherUnits.Standard).Result.Weathers[0].Description;
             Assert.AreEqual("few clouds", actual);

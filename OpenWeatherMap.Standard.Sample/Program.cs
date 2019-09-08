@@ -1,4 +1,6 @@
-﻿using System;
+﻿using OpenWeatherMap.Standard.Enums;
+using OpenWeatherMap.Standard.Models;
+using System;
 using System.Threading.Tasks;
 
 namespace OpenWeatherMap.Standard.Sample
@@ -7,24 +9,27 @@ namespace OpenWeatherMap.Standard.Sample
     {
         private static void Main(string[] args)
         {
-            string key = "148ff5a63e92f025856f0912aacd4b80";
-            Forecast forecast = new Forecast();
+            string key = "USE_YOUR_KEY_PLEASE";
+            Current current = new Current(key);
             WeatherData data = null;
-            Task getWeather = Task.Run(async () => { data = await forecast.GetWeatherDataByZipAsync(key, "32927", "us", WeatherUnits.Metric); });
+            Task getWeather = Task.Run(async () => { data = await current.GetWeatherDataByZipAsync("32927", "us"); });
             getWeather.Wait();
+            Console.WriteLine($"[zip code]: current temperature in area zip-coded 32927 US is: {data.WeatherDayInfo.Temperature}");
 
-            WeatherData dataCity = null;
-            Task getWeatherCity = Task.Run(async () => { dataCity = await forecast.GetWeatherDataByCityNameAsync(key, "cocoa,fl","us"); });
+            Task getWeatherCity = Task.Run(async () => { data = await current.GetWeatherDataByCityNameAsync("berlin", "de"); });
             getWeatherCity.Wait();
-            //4151440
-            WeatherData dataCityWOCounty = null;
-            Task getWeatherCityWOCountry = Task.Run(async () => { dataCity = await forecast.GetWeatherDataByCityNameAsync(key, "nassau", "us"); });
-            getWeatherCityWOCountry.Wait();
+            Console.WriteLine($"[city, country code]: current temperature in Berlin, Germany is: {data.WeatherDayInfo.Temperature}");
 
-            WeatherData dataId = null;
-            Task getWeatherId = Task.Run(async () => { dataId = await forecast.GetWeatherDataByCityIdAsync(key, 4151440); });
-            getWeatherId.Wait();
-            Console.WriteLine(dataCity.Weathers[0].Description);
+            Task getWeatherCityWOCountry = Task.Run(async () => { data = await current.GetWeatherDataByCityNameAsync("baghdad"); });
+            getWeatherCityWOCountry.Wait();
+            Console.WriteLine($"[city]: current temperature in Baghdad is: {data.WeatherDayInfo.Temperature}");
+
+            Task getWeatherCoords = Task.Run(async () => { data = await current.GetWeatherDataByCoordinatesAsync(-33.865143, 151.209900); });
+            getWeatherCoords.Wait();
+            Console.WriteLine($"[lat, lon]: current temperature in Sydney is: {data.WeatherDayInfo.Temperature}");
+
+            Console.ReadLine();
+
         }
     }
 }

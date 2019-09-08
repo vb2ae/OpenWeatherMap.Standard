@@ -3,14 +3,16 @@ using System.Threading.Tasks;
 using FakeItEasy;
 using Newtonsoft.Json;
 using NUnit.Framework;
+using OpenWeatherMap.Standard.Interfaces;
+using OpenWeatherMap.Standard.Models;
 
 namespace OpenWeatherMap.Standard.Test
 {
     [TestFixture()]
     public class CityIdTests
     {
-        private string cloudy = "{\"coord\":{\"Longitude\":-80.8,\"Latitude\":28.46},\"weather\":[{\"Id\":801,\"WeatherDayInfo\":\"Clouds\",\"Description\":\"few clouds\",\"Icon\":\"02n\"}],\"base\":\"stations\",\"WeatherDayInfo\":{\"Temperature\":76.37,\"Pressure\":1014,\"Humidity\":83,\"MinimumTemperature\":73.4,\"MaximumTemperature\":78.8},\"Visibility\":16093,\"wind\":{\"speed\":5.82,\"deg\":340},\"clouds\":{\"all\":20},\"AcquisitionDateTime\":1505642280,\"DayInfo\":{\"type\":1,\"Id\":643,\"message\":0.0038,\"country\":\"US\",\"sunrise\":1505646573,\"sunset\":1505690690},\"Id\":0,\"Name\":\"Cocoa\",\"HttpStatusCode\":200}";
-        private WeatherData expected;
+        private const string cloudy = "{\"coord\":{\"lon\":145.77,\"lat\":-16.92},\"weather\":[{\"id\":802,\"main\":\"Clouds\",\"description\":\"scattered clouds\",\"icon\":\"03n\"}],\"base\":\"stations\",\"main\":{\"temp\":300.15,\"pressure\":1007,\"humidity\":74,\"temp_min\":300.15,\"temp_max\":300.15},\"visibility\":10000,\"wind\":{\"speed\":3.6,\"deg\":160},\"clouds\":{\"all\":40},\"dt\":1485790200,\"sys\":{\"type\":1,\"id\":8166,\"message\":0.2064,\"country\":\"AU\",\"sunrise\":1485720272,\"sunset\":1485766550},\"id\":2172797,\"name\":\"Cairns\",\"cod\":200}";
+        private readonly WeatherData expected;
 
         public CityIdTests()
         {
@@ -22,9 +24,10 @@ namespace OpenWeatherMap.Standard.Test
         {
             var fake = A.Fake<IRestService>();
             A.CallTo(() => fake.GetAsync("http://api.openweathermap.org/data/2.5/weather?id=1234&appid=UnitTest&units=Standard")).Returns(Task.FromResult(expected));
-            var weather = new Forecast(fake);
-            string actual = weather.GetWeatherDataByCityIdAsync("UnitTest", 1234, WeatherUnits.Standard).Result.Weathers[0].Description;
-            Assert.AreEqual("few clouds", actual);
+            var weather = new Current(Consts.API_KEY, Enums.WeatherUnits.Standard);
+            var res = weather.GetWeatherDataByCityIdAsync(2172797).Result;
+            string actual = res.Weathers[0].Description;
+            Assert.AreEqual("scattered clouds", actual);
         }
     }
 }

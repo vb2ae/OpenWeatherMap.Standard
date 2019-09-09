@@ -22,8 +22,8 @@ namespace OpenWeatherMap.Standard.Test
         public void TestCloudy()
         {
             var fake = A.Fake<IRestService>();
-            A.CallTo(() => fake.GetAsync("http://api.openweathermap.org/data/2.5/weather?q=Cocoa,FL,USA&appid=UnitTest&units=Standard")).Returns(Task.FromResult(expected));
-            var weather = new Current(Consts.API_KEY, Enums.WeatherUnits.Standard);
+            A.CallTo(() => fake.GetAsync("https://api.openweathermap.org/data/2.5/weather?q=Cocoa,FL,USA&units=Standard&appid=YOUR_API_KEY")).Returns(Task.FromResult(expected));
+            var weather = new Current(Consts.API_KEY,fake, Enums.WeatherUnits.Standard);
             var res = weather.GetWeatherDataByCityNameAsync("Cocoa,FL", "USA").Result;
             Assert.AreEqual(expected.Coordinates.Latitude, res.Coordinates.Latitude);
         }

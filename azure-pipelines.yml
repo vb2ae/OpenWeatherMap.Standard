@@ -18,7 +18,7 @@ variables:
 steps:
 - script: |
     dotnet build -c $(buildConfiguration)
-    dotnet test OpenWeatherMap.Standard.Test -c $(buildConfiguration)
-    dotnet pack OpenWeatherMap.Standard.csproj -c $(buildConfiguration) /p:PackageVersion=$(major).$(minor).$(patch) --output $(Build.ArtifactStagingDirectory) --no-build --no-restore
+    dotnet test OpenWeatherMap.Standard/OpenWeatherMap.Standard.Test -c $(buildConfiguration)
+    dotnet pack OpenWeatherMap.Standard/OpenWeatherMap.Standard.csproj -c $(buildConfiguration) /p:PackageVersion=$(major).$(minor).$(patch) --output $(Build.ArtifactStagingDirectory) --no-build --no-restore
  
 - task: PublishBuildArtifacts@1

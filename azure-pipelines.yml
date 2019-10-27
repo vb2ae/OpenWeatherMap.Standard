@@ -40,9 +40,9 @@ steps:
 - task: NuGetCommand@2
   inputs:
     command: 'pack'
-    packagesToPack: '**/*.csproj'
+    packagesToPack: '**/OpenWeatherMap.Standard.csproj'
     versioningScheme: 'off'
-    
+
 - task: PublishSymbols@2
   displayName: 'Publish symbols path'
   inputs:

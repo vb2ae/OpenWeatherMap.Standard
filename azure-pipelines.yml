@@ -11,10 +11,11 @@ pool:
   vmImage: 'windows-2019'
  
 variables:
-  buildConfiguration: 'release'
-  major: 1
-  minor: 0
-  patch: $[counter('myversioncounter', 0)]
+  solution: '**/*.sln'
+  buildPlatform: 'Any CPU'
+  buildConfiguration: 'Release'
+
+  
  
 steps:
 - task: NuGetToolInstaller@0

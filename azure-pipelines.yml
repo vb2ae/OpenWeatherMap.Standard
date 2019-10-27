@@ -17,17 +17,40 @@ variables:
   patch: $[counter('myversioncounter', 0)]
  
 steps:
-- task: NuGetCommand@2
+- task: NuGetToolInstaller@0
+  displayName: 'Use NuGet 4.4.1'
   inputs:
-    command: 'restore'
-    restoreSolution: '**/*.sln'
-    feedsToUse: 'select'
-- script: |
-    dotnet build -c $(buildConfiguration)
+    versionSpec: 4.4.1
 
- 
-- task: PublishBuildArtifacts@1
+
+- task: NuGetCommand@2
+  displayName: 'NuGet restore'
   inputs:
-    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
-    ArtifactName: 'drop'
-    publishLocation: 'Container'
+    restoreSolution: '$(solution)'
+
+
+- task: VSBuild@1
+  inputs:
+    solution: '$(solution)'
+    platform: '$(buildPlatform)'
+    configuration: '$(buildConfiguration)'
+
+- task: PublishSymbols@2
+  displayName: 'Publish symbols path'
+  inputs:
+    SearchPattern: '**\bin\**\*.pdb'
+
+    PublishSymbols: false
+
+  continueOnError: true
+
+- task: CopyFiles@2
+  displayName: 'Copy Files to: $(build.artifactstagingdirectory)'
+  inputs:
+    SourceFolder: '$(system.defaultworkingdirectory)'
+
+    Contents: '**\bin\$(BuildConfiguration)\**'
+
+    TargetFolder: '$(build.artifactstagingdirectory)'
+
+

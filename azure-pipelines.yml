@@ -15,9 +15,10 @@ variables:
   minor: 0
   patch: $[counter('myversioncounter', 0)]
  
-- task: DotNetCoreCLI@2
-  inputs:
-    command: 'build'
+steps:
+- script: |
+    dotnet build -c $(buildConfiguration)
+
  
 - task: PublishBuildArtifacts@1
   inputs:

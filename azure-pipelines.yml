@@ -17,7 +17,13 @@ variables:
  
 steps:
 - script: |
-    dotnet build -c $(buildConfiguration)
-    dotnet test OpenWeatherMap.Standard/OpenWeatherMap.Standard.Test -c $(buildConfiguration)
+    dotnet build -c - task: DotNetCoreCLI@2
+  inputs:
+    command: 'build'
+    projects: '$(buildConfiguration)'
  
 - task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+    ArtifactName: 'drop'
+    publishLocation: 'Container'

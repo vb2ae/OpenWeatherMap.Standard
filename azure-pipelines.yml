@@ -7,58 +7,18 @@ trigger:
 - master
 
 pool:
-  vmImage: 'VS2017-Win2016'
-
+  vmImage: 'ubuntu-16.04'
+ 
 variables:
-  solution: '**/*.sln'
-  buildPlatform: 'Any CPU'
-  buildConfiguration: 'Release'
-
-  
+  buildConfiguration: 'release'
+  major: 1
+  minor: 0
+  patch: $[counter('myversioncounter', 0)]
+ 
 steps:
-- task: NuGetToolInstaller@0
-  displayName: 'Use NuGet 4.4.1'
-  inputs:
-    versionSpec: 4.4.1
-
-
-- task: NuGetCommand@2
-  displayName: 'NuGet restore'
-  inputs:
-    restoreSolution: '$(solution)'
-
-
-- task: VSBuild@1
-  inputs:
-    solution: '$(solution)'
-    platform: '$(buildPlatform)'
-    configuration: '$(buildConfiguration)'
-
-- task: VSTest@2
-  inputs: 
-    platform: '$(buildPlatform)'
-    configuration: '$(buildConfiguration)'
-
-- task: PublishSymbols@2
-  displayName: 'Publish symbols path'
-  inputs:
-    SearchPattern: '**\bin\**\*.pdb'
-
-    PublishSymbols: false
-
-  continueOnError: true
-
-- task: CopyFiles@2
-  displayName: 'Copy Files to: $(build.artifactstagingdirectory)'
-  inputs:
-    SourceFolder: '$(system.defaultworkingdirectory)'
-
-    Contents: '**\bin\$(BuildConfiguration)\**'
-
-    TargetFolder: '$(build.artifactstagingdirectory)'
-
-
+- script: |
+    dotnet build -c $(buildConfiguration)
+    dotnet test DemoLibrary.UnitTests -c $(buildConfiguration)
+    dotnet pack DemoLibrary/DemoLibrary.csproj -c $(buildConfiguration) /p:PackageVersion=$(major).$(minor).$(patch) --output $(Build.ArtifactStagingDirectory) --no-build --no-restore
+ 
 - task: PublishBuildArtifacts@1
-  displayName: 'Publish Artifact: drop'
-  inputs:
-    PathtoPublish: '$(build.artifactstagingdirectory)'

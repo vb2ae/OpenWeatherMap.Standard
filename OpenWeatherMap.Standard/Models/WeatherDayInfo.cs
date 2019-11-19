@@ -8,7 +8,7 @@ namespace OpenWeatherMap.Standard.Models
     /// </summary>
     public class WeatherDayInfo : BaseModel
     {
-        private float temp, maxTemp, minTemp, pressure;
+        private float temp, maxTemp, minTemp, pressure, seaLevel, grndLevel;
         private int humidity;
 
         /// <summary>
@@ -57,6 +57,26 @@ namespace OpenWeatherMap.Standard.Models
         {
             get => maxTemp;
             set => SetProperty(ref maxTemp, value);
+        }
+
+        /// <summary>
+        /// Atmospheric pressure on the sea level, hPa
+        /// </summary>
+        [JsonProperty("sea_level")]
+        public float SeaLevel
+        {
+            get => seaLevel;
+            set => SetProperty(ref seaLevel, value);
+        }
+
+        /// <summary>
+        /// Atmospheric pressure on the ground level, hPa
+        /// </summary>
+        [JsonProperty("grnd_level")]
+        public float GroundLevel
+        {
+            get => grndLevel;
+            set => SetProperty(ref grndLevel, value);
         }
     }
 

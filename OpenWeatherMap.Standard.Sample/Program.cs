@@ -1,10 +1,10 @@
 ﻿using OpenWeatherMap.Standard.Enums;
-using OpenWeatherMap.Standard.Models;
 using System;
 using System.Threading.Tasks;
 
 namespace OpenWeatherMap.Standard.Sample
 {
+using OpenWeatherMap.Standard.Models;
     internal class Program
     {
         private static void Main(string[] args)

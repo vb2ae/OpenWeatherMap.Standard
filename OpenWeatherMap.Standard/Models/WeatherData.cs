@@ -19,6 +19,8 @@ namespace OpenWeatherMap.Standard.Models
         private WeatherDayInfo weatherDayInfo;
         private Wind wind;
         private Clouds clouds;
+        private Rain rain;
+        private Snow snow;
         private DateTime dt;
         private DayInfo dayInfo;
 
@@ -88,6 +90,24 @@ namespace OpenWeatherMap.Standard.Models
         {
             get => clouds;
             set => SetProperty(ref clouds, value);
+        }
+
+        /// <summary>
+        /// rain info
+        /// </summary>
+        public Rain Rain
+        {
+            get => rain;
+            set => SetProperty(ref rain, value);
+        }
+
+        /// <summary>
+        /// snow info
+        /// </summary>
+        public Snow Snow
+        {
+            get => snow;
+            set => SetProperty(ref snow, value);
         }
 
         /// <summary>

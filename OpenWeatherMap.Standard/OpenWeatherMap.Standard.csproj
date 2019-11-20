@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>1.1.0</Version>
+    <Version>1.2.0</Version>
     <Description>Standard Class library for getting weather from open weather map's api</Description>
     <PackageTags>standard library, weather, open weather map</PackageTags>
     <PackageReleaseNotes>Standard Class library for getting weather from open weather map's api</PackageReleaseNotes>
@@ -12,11 +12,11 @@
     <RepositoryUrl>https://github.com/vb2ae/OpenWeatherMap.standard</RepositoryUrl>
     <RepositoryType>GIT</RepositoryType>
     <PackOnBuild>true</PackOnBuild>
-    <PackageVersion>1.0.0</PackageVersion>
+    <PackageVersion>1.2.0</PackageVersion>
     <Authors>Ken Tucker </Authors>
     <PackageId>OpenWeatherMap.Standard</PackageId>
-    <AssemblyVersion>1.1.0.0</AssemblyVersion>
-    <FileVersion>1.1.0.0</FileVersion>
+    <AssemblyVersion>1.2.0.0</AssemblyVersion>
+    <FileVersion>1.2.0.0</FileVersion>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">

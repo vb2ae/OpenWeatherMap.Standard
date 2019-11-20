@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using FakeItEasy;
 using Newtonsoft.Json;
 using NUnit.Framework;
+using OpenWeatherMap.Standard.Enums;
 using OpenWeatherMap.Standard.Interfaces;
 using OpenWeatherMap.Standard.Models;
 
@@ -24,7 +25,7 @@ namespace OpenWeatherMap.Standard.Test
         {
             var fake = A.Fake<IRestService>();
             A.CallTo(() => fake.GetAsync("https://api.openweathermap.org/data/2.5/weather?id=2172797&units=Standard&appid=YOUR_API_KEY")).Returns(Task.FromResult(expected));
-            var weather = new Current(Consts.API_KEY, fake,Enums.WeatherUnits.Standard);
+            var weather = new Current(Consts.API_KEY, fake,Enums.WeatherUnits.Standard,Languages.English);
             var res = weather.GetWeatherDataByCityIdAsync(2172797).Result;
             string actual = res.Weathers[0].Description;
             Assert.AreEqual("scattered clouds", actual);

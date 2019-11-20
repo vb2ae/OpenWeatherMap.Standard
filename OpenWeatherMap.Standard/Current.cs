@@ -58,6 +58,13 @@ namespace OpenWeatherMap.Standard
         public WeatherUnits Units { get; set; } = WeatherUnits.Metric;
 
         /// <summary>
+        /// Translation is only applied for the "description" field.
+        /// <para />
+        /// its default is English
+        /// </summary>
+        public Languages Languages { get; set; } = Languages.English;
+
+        /// <summary>
         /// indicate weather to call the API through HTTPS or not.
         /// <para />
         /// it's highly recommended to leave it true
@@ -104,18 +111,20 @@ namespace OpenWeatherMap.Standard
         }
 
         /// <summary>
-        /// a constructor that allows you to use your own IRestService implementation and set default measurements system
+        /// a constructor that allows you to use your own IRestService implementation and set default measurements system and language
         /// </summary>
         /// <param name="_appId">OWM app id</param>
         /// <param name="rest">your IRestService implementation</param>
         /// <param name="_units">desired system</param>
-        public Current(string _appId, IRestService rest, WeatherUnits _units)
+        /// <param name="_languages">desired language</param>
+        public Current(string _appId, IRestService rest, WeatherUnits _units, Languages _languages)
         {
             if (string.IsNullOrEmpty(_appId))
                 throw new ArgumentNullException("_appId", "AppId must NOT be null or empty string");
             AppId = _appId;
             Service = rest;
             Units = _units;
+            Languages = _languages;
         }
 
         /// <summary>
@@ -127,7 +136,7 @@ namespace OpenWeatherMap.Standard
         {
             if (string.IsNullOrEmpty(query))
                 throw new ArgumentNullException("query", "query can NOT be null or empty string");
-            return $"http{(UseHTTPS ? "s" : "")}://{API_ROOT}{API_VERSION}{WEATHER_REQUESTS_ROOT}?{query}&units={Units.ToString()}&appid={AppId}";
+            return $"http{(UseHTTPS ? "s" : "")}://{API_ROOT}{API_VERSION}{WEATHER_REQUESTS_ROOT}?{query}&units={Units.ToString()}&appid={AppId}&lang={Languages.GetStringValue()}";
         }
 
         /// <summary>

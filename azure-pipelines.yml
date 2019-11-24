@@ -30,7 +30,10 @@ steps:
   inputs:
     restoreSolution: '$(solution)'
 
-
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'build'
+    projects: '**/OpenWeatherMap.Standard.csproj'
 
 - task: DotNetCoreCLI@2
   inputs:

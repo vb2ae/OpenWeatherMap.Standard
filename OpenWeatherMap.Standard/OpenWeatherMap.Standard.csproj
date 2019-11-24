@@ -7,7 +7,7 @@
     <Description>Standard Class library for getting weather from open weather map's api</Description>
     <PackageTags>standard library, weather, open weather map</PackageTags>
     <PackageReleaseNotes>Standard Class library for getting weather from open weather map's api</PackageReleaseNotes>
-    <PackageLicenseUrl>https://github.com/vb2ae/OpenWeatherMap.Standard/blob/master/LICENSE</PackageLicenseUrl>
+    <PackageLicenseUrl></PackageLicenseUrl>
     <PackageProjectUrl>https://github.com/vb2ae/OpenWeatherMap.Standard/</PackageProjectUrl>
     <RepositoryUrl>https://github.com/vb2ae/OpenWeatherMap.standard</RepositoryUrl>
     <RepositoryType>GIT</RepositoryType>
@@ -17,6 +17,8 @@
     <PackageId>OpenWeatherMap.Standard</PackageId>
     <AssemblyVersion>1.2.0.0</AssemblyVersion>
     <FileVersion>1.2.0.0</FileVersion>
+    <Copyright>2019</Copyright>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">

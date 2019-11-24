@@ -33,15 +33,14 @@ steps:
   inputs:
     command: 'build'
 
-
-- task: PublishSymbols@2
-  displayName: 'Publish symbols path'
+- task: VSTest@2
   inputs:
-    SearchPattern: '**\bin\**\*.pdb'
-
-    PublishSymbols: false
-
-  continueOnError: true
+    testSelector: 'testAssemblies'
+    testAssemblyVer2: |
+      **\*test*.dll
+      !**\*TestAdapter.dll
+      !**\obj\**
+    searchFolder: '$(System.DefaultWorkingDirectory)'
 
 - task: CopyFiles@2
   displayName: 'Copy Files to: $(build.artifactstagingdirectory)'

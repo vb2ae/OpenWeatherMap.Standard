@@ -31,8 +31,7 @@ steps:
     restoreSolution: '$(solution)'
 
 
-- task: VSBuild@1
-  inputs:
+
 - task: DotNetCoreCLI@2
   inputs:
     command: 'pack'

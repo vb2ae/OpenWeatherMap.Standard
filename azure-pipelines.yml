@@ -32,14 +32,7 @@ steps:
 - task: DotNetCoreCLI@2
   inputs:
     command: 'build'
-- task: DotNetCoreCLI@2
-  inputs:
-    command: 'pack'
-    packagesToPack: '**/OpenWeatherMap.Standard.csproj'
-    versioningScheme: 'off'
-    solution: '$(solution)'
-    platform: '$(buildPlatform)'
-    configuration: '$(buildConfiguration)'
+
 
 - task: PublishSymbols@2
   displayName: 'Publish symbols path'

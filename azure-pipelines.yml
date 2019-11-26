@@ -32,6 +32,7 @@ steps:
 - task: DotNetCoreCLI@2
   inputs:
     command: 'build'
+    arguments: '$(buildConfiguration)'
 
 - task: VSTest@2
   inputs:
@@ -44,7 +45,7 @@ steps:
 - task: CopyFiles@2
   displayName: 'Copy Files to: $(build.artifactstagingdirectory)'
   inputs:
-    SourceFolder: 'OpenWeatherMap.Standard\bin\Debug\'
+    SourceFolder: 'OpenWeatherMap.Standard\bin\$(buildConfiguration)\'
 
     Contents: '**'
 

@@ -44,9 +44,9 @@ steps:
 - task: CopyFiles@2
   displayName: 'Copy Files to: $(build.artifactstagingdirectory)'
   inputs:
-    SourceFolder: '$(Agent.WorkFolder)'
+    SourceFolder: '$(Agent.WorkFolder)\OpenWeatherMap.Standard\bin\$(BuildConfiguration)\'
 
-    Contents: '*$(Agent.WorkFolder)\OpenWeatherMap.Standard\bin\$(BuildConfiguration)\**'
+    Contents: '**'
 
     TargetFolder: '$(build.artifactstagingdirectory)'
 

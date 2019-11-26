@@ -41,13 +41,19 @@ steps:
       !**\*TestAdapter.dll
       !**\obj\**
     searchFolder: '$(System.DefaultWorkingDirectory)'
-
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'pack'
+    packagesToPack: '**/openweathermap.standard.csproj'
+    includesymbols: true
+    includesource: true
+    versioningScheme: 'off'
 - task: CopyFiles@2
   displayName: 'Copy Files to: $(build.artifactstagingdirectory)'
   inputs:
     SourceFolder: '$(Agent.WorkFolder)'
 
-    Contents: '*$Agent.WorkFolder)\OpenWeatherMap.Standard\bin\$(BuildConfiguration)\**'
+    Contents: '*$(Agent.WorkFolder)\OpenWeatherMap.Standard\bin\$(BuildConfiguration)\**'
 
     TargetFolder: '$(build.artifactstagingdirectory)'
 

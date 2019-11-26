@@ -41,13 +41,12 @@ steps:
       !**\*TestAdapter.dll
       !**\obj\**
     searchFolder: '$(System.DefaultWorkingDirectory)'
-
 - task: CopyFiles@2
   displayName: 'Copy Files to: $(build.artifactstagingdirectory)'
   inputs:
     SourceFolder: '$(Agent.WorkFolder)'
 
-    Contents: '*$Agent.WorkFolder)\OpenWeatherMap.Standard\bin\$(BuildConfiguration)\**'
+    Contents: '*$(Agent.WorkFolder)\OpenWeatherMap.Standard\bin\$(BuildConfiguration)\**'
 
     TargetFolder: '$(build.artifactstagingdirectory)'
 

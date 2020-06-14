@@ -1,13 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.26730.16
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30204.135
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpenWeatherMap.Standard", "OpenWeatherMap.Standard\OpenWeatherMap.Standard.csproj", "{F2DC58D5-D75E-47F9-815D-18454475387D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenWeatherMap.Standard.Sample", "OpenWeatherMap.Standard.Sample\OpenWeatherMap.Standard.Sample.csproj", "{17BDADF4-1DD8-42CA-951B-B504A2F1B7CC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpenWeatherMap.Standard.Sample", "OpenWeatherMap.Standard.Sample\OpenWeatherMap.Standard.Sample.csproj", "{17BDADF4-1DD8-42CA-951B-B504A2F1B7CC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenWeatherMap.Standard.Test", "OpenWeatherMap.Standard.Test\OpenWeatherMap.Standard.Test.csproj", "{8ABE787B-E257-417C-AC7C-EF0FF0D0EAEB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenWeatherMap.Standard.Core.Test", "OpenWeatherMap.Standard.Core.Test\OpenWeatherMap.Standard.Core.Test.csproj", "{AE0684F4-2A1E-4943-BDD3-909D8E6C8232}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,10 +23,10 @@ Global
 		{17BDADF4-1DD8-42CA-951B-B504A2F1B7CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{17BDADF4-1DD8-42CA-951B-B504A2F1B7CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{17BDADF4-1DD8-42CA-951B-B504A2F1B7CC}.Release|Any CPU.Build.0 = Release|Any CPU
-		{8ABE787B-E257-417C-AC7C-EF0FF0D0EAEB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8ABE787B-E257-417C-AC7C-EF0FF0D0EAEB}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8ABE787B-E257-417C-AC7C-EF0FF0D0EAEB}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8ABE787B-E257-417C-AC7C-EF0FF0D0EAEB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AE0684F4-2A1E-4943-BDD3-909D8E6C8232}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AE0684F4-2A1E-4943-BDD3-909D8E6C8232}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AE0684F4-2A1E-4943-BDD3-909D8E6C8232}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AE0684F4-2A1E-4943-BDD3-909D8E6C8232}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

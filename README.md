@@ -1,6 +1,6 @@
 # OpenWeatherMap.Standard
 
-[![Build Status](<https://dev.azure.com/vb2ae/GITHub%20Builds/_apis/build/status/GITHub%20Builds-.NET%20Desktop-CI%20(1)?branchName=master>)](https://dev.azure.com/vb2ae/GITHub%20Builds/_build/latest?definitionId=25&branchName=master)
+![.NET Core](https://github.com/vb2ae/OpenWeatherMap.Standard/workflows/.NET%20Core/badge.svg)
 
 This is a standard class library where you can call open weather map to get the weather data for a zip code written by Ken Tucker. This library is not from OpenWeatherMap.
 

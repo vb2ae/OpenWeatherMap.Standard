@@ -24,9 +24,9 @@ jobs:
     - name: Test
       run: dotnet test --no-restore --verbosity normal
     - name: Publish
-      run: dotnet publish 
+      run: dotnet publish --configuration Release
     - name: Upload Artifact
       uses: actions/upload-artifact@v1.0.0
       with:
         name: published_nuget
-        path: OpenWeatherMap.Standard/bin/Debug/OpenWeatherMap.Standard.1.3.0.nupkg
+        path: OpenWeatherMap.Standard/bin/Release/OpenWeatherMap.Standard.1.3.0.nupkg

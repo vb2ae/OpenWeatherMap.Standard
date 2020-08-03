@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using System;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 
 namespace OpenWeatherMap.Standard.Models
@@ -6,6 +7,7 @@ namespace OpenWeatherMap.Standard.Models
     /// <summary>
     /// weatherdayinfo model
     /// </summary>
+    [Serializable]
     public class WeatherDayInfo : BaseModel
     {
         private float temp, maxTemp, minTemp, pressure, seaLevel, grndLevel;

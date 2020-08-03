@@ -1,8 +1,11 @@
-﻿namespace OpenWeatherMap.Standard.Models
+﻿using System;
+
+namespace OpenWeatherMap.Standard.Models
 {
     /// <summary>
     /// weather model
     /// </summary>
+    [Serializable]
     public class Weather : BaseModel
     {
         private int id;

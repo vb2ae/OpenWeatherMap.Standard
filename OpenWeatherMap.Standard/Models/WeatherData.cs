@@ -9,6 +9,7 @@ namespace OpenWeatherMap.Standard.Models
     /// <summary>
     /// weatherdata model
     /// </summary>
+    [Serializable]
     public class WeatherData : BaseModel
     {
         private string _base, name;

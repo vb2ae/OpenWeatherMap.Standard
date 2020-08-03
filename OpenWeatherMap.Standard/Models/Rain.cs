@@ -8,6 +8,7 @@ namespace OpenWeatherMap.Standard.Models
     /// <summary>
     /// rain model
     /// </summary>
+    [Serializable]
     public class Rain : BaseModel
     {
         private float lastHour, lastThreeHours;

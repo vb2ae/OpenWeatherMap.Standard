@@ -1,8 +1,11 @@
-﻿namespace OpenWeatherMap.Standard.Models
+﻿using System;
+
+namespace OpenWeatherMap.Standard.Models
 {
     /// <summary>
     /// clouds model
     /// </summary>
+    [Serializable]
     public class Clouds : BaseModel
     {
         private int all;

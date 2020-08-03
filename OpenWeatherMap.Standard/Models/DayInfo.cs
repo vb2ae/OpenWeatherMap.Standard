@@ -7,6 +7,7 @@ namespace OpenWeatherMap.Standard.Models
     /// <summary>
     /// day info model
     /// </summary>
+    [Serializable]
     public class DayInfo : BaseModel
     {
         private int type, id;

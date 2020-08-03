@@ -1,10 +1,12 @@
-﻿using Newtonsoft.Json;
+﻿using System;
+using Newtonsoft.Json;
 
 namespace OpenWeatherMap.Standard.Models
 {
     /// <summary>
     /// coordinates model
     /// </summary>
+    [Serializable]
     public class Coordinates : BaseModel
     {
         private float lon, lat;

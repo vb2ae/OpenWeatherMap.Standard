@@ -1,8 +1,11 @@
-﻿namespace OpenWeatherMap.Standard.Models
+﻿using System;
+
+namespace OpenWeatherMap.Standard.Models
 {
     /// <summary>
     /// wind model
     /// </summary>
+    [Serializable]
     public class Wind : BaseModel
     {
         private float speed, gust;

@@ -9,6 +9,7 @@ namespace OpenWeatherMap.Standard.Models
     /// <summary>
     /// BaseModel for, you know, Models
     /// </summary>
+    [Serializable]
     public class BaseModel : INotifyPropertyChanged
     {
         /// <summary>

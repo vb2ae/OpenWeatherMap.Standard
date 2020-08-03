@@ -8,6 +8,7 @@ namespace OpenWeatherMap.Standard.Models
     /// <summary>
     /// snow model
     /// </summary>
+    [Serializable]
     public class Snow : BaseModel
     {
         private float lastHour, lastThreeHours;

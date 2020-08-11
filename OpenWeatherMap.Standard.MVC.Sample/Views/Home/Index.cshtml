@@ -1,0 +1,31 @@
+﻿@model OpenWeatherMap.Standard.Models.WeatherData;
+
+@{
+    ViewData["Title"] = "Current weather conditions";
+}
+@{
+    var weatherIconUrl = $"https://openweathermap.org/img/wn/{@Model.Weathers.First().Icon}.png";
+}
+<div class="text-center">
+    <h1 class="display-4">Current weather conditions</h1>
+</div>
+@if (@Model != null)
+{
+    <div style="width:100%; background-color: lightblue; height: 300px; text-align: center; vertical-align: center;">
+        <img src="@weatherIconUrl" alt="@Model.Weathers.First().Description" style="width:250px; height: 250px;"/>
+    </div>
+    <h2 style="text-align: center;">@Model.Weathers.First().Description</h2>
+    <p><label>Current Temperture</label>&nbsp;@Model.WeatherDayInfo.Temperature</p>
+    <p><label>Todays Low Temperture</label>&nbsp;@Model.WeatherDayInfo.MinimumTemperature</p>
+    <p><label>Todays Max Temperture</label>&nbsp;@Model.WeatherDayInfo.MaximumTemperature</p>
+    <br/>
+    <p><label>Current Wind direction</label>&nbsp;@Model.Wind.Degree</p>
+    <p><label>Current Wind speed</label>&nbsp;@Model.Wind.Speed</p>
+}
+else
+{
+    <p>Error getting weather data</p>
+}
+
+<p>This site uses the OpenWeatherMap.Standard <a href="https://www.nuget.org/packages/OpenWeatherMap.Standard">Nuget package</a> to get weather from open weather map for Florida's Space Coast.</p>
+<p>To use get data from OpenWeatherMap.org you will need to get api from <a href="https://openweathermap.org/api">api.openweathermap.org</a></p>

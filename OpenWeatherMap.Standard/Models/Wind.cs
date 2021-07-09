@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 
 namespace OpenWeatherMap.Standard.Models
 {
@@ -23,6 +24,7 @@ namespace OpenWeatherMap.Standard.Models
         /// <summary>
         /// wind degree
         /// </summary>
+        [JsonProperty("deg")]
         public int Degree
         {
             get => deg;

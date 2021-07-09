@@ -9,8 +9,7 @@ namespace OpenWeatherMap.Standard.Models
     [Serializable]
     public class Wind : BaseModel
     {
-        private float speed, gust;
-        private int deg;
+        private float speed, gust, deg;
 
         /// <summary>
         /// wind speed
@@ -25,7 +24,7 @@ namespace OpenWeatherMap.Standard.Models
         /// wind degree
         /// </summary>
         [JsonProperty("deg")]
-        public int Degree
+        public float Degree
         {
             get => deg;
             set => SetProperty(ref deg, value);

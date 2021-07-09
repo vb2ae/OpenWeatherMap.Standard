@@ -82,7 +82,7 @@ namespace OpenWeatherMap.Standard.Models
         }
 
         /// <summary>
-        /// Atmospheric pressure on the ground level, hPa
+        /// Temperature. This temperature parameter accounts for the human perception of weather
         /// </summary>
         [JsonProperty("feels_like")]
         public float FeelsLike

@@ -17,7 +17,7 @@
     <PackageId>OpenWeatherMap.Standard</PackageId>
     <AssemblyVersion>1.4.0.0</AssemblyVersion>
     <FileVersion>1.4.0.0</FileVersion>
-    <Copyright>2020</Copyright>
+    <Copyright>2021</Copyright>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
   </PropertyGroup>
 

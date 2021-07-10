@@ -10,7 +10,7 @@ namespace OpenWeatherMap.Standard.Models
     [Serializable]
     public class WeatherDayInfo : BaseModel
     {
-        private float temp, maxTemp, minTemp, pressure, seaLevel, grndLevel;
+        private float temp, maxTemp, minTemp, pressure, seaLevel, grndLevel, feelsLike;
         private int humidity;
 
         /// <summary>
@@ -80,6 +80,15 @@ namespace OpenWeatherMap.Standard.Models
             get => grndLevel;
             set => SetProperty(ref grndLevel, value);
         }
-    }
 
+        /// <summary>
+        /// Temperature. This temperature parameter accounts for the human perception of weather
+        /// </summary>
+        [JsonProperty("feels_like")]
+        public float FeelsLike
+        {
+            get => feelsLike;
+            set => SetProperty(ref feelsLike, value);
+        }
+    }
 }

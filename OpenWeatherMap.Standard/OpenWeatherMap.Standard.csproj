@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>1.3.0</Version>
+    <Version>1.4.0</Version>
     <Description>Standard Class library for getting weather from open weather map's api</Description>
     <PackageTags>standard library, weather, open weather map</PackageTags>
     <PackageReleaseNotes>Standard Class library for getting weather from open weather map's api</PackageReleaseNotes>

@@ -12,11 +12,11 @@
     <RepositoryUrl>https://github.com/vb2ae/OpenWeatherMap.standard</RepositoryUrl>
     <RepositoryType>GIT</RepositoryType>
     <PackOnBuild>true</PackOnBuild>
-    <PackageVersion>1.3.0</PackageVersion>
+    <PackageVersion>1.4.0</PackageVersion>
     <Authors>Ken Tucker </Authors>
     <PackageId>OpenWeatherMap.Standard</PackageId>
-    <AssemblyVersion>1.3.0.0</AssemblyVersion>
-    <FileVersion>1.3.0.0</FileVersion>
+    <AssemblyVersion>1.4.0.0</AssemblyVersion>
+    <FileVersion>1.4.0.0</FileVersion>
     <Copyright>2020</Copyright>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
   </PropertyGroup>

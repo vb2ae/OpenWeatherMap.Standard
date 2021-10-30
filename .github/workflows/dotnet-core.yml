@@ -26,3 +26,4 @@ jobs:
       with:
         name: published_nuget
         path: OpenWeatherMap.Standard/bin/Release/OpenWeatherMap.Standard.1.5.0.nupkg
+

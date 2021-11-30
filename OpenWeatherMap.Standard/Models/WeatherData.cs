@@ -48,7 +48,7 @@ namespace OpenWeatherMap.Standard.Models
         /// <summary>
         /// Base
         /// </summary>
-        [JsonProperty("_base")]
+        [JsonProperty("base")]
         public string Base
         {
             get => _base;

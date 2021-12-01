@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFrameworks>netstandard2.0;net5.0;netcoreapp3.1</TargetFrameworks>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>1.5.0</Version>
+    <Version>1.6.0</Version>
     <Description>Standard Class library for getting weather from open weather map's api</Description>
     <PackageTags>standard library, weather, open weather map</PackageTags>
     <PackageReleaseNotes>Standard Class library for getting weather from open weather map's api</PackageReleaseNotes>
@@ -12,11 +12,11 @@
     <RepositoryUrl>https://github.com/vb2ae/OpenWeatherMap.standard</RepositoryUrl>
     <RepositoryType>GIT</RepositoryType>
     <PackOnBuild>true</PackOnBuild>
-    <PackageVersion>1.5.0</PackageVersion>
+    <PackageVersion>1.6.0</PackageVersion>
     <Authors>Ken Tucker </Authors>
     <PackageId>OpenWeatherMap.Standard</PackageId>
-    <AssemblyVersion>1.5.0</AssemblyVersion>
-    <FileVersion>1.5.0</FileVersion>
+    <AssemblyVersion>1.6.0</AssemblyVersion>
+    <FileVersion>1.6.0</FileVersion>
     <Copyright>2021</Copyright>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
   </PropertyGroup>

@@ -29,8 +29,8 @@ namespace OpenWeatherMap.Standard.Models
         /// </summary>
         public int Id
         {
-            get => type;
-            set => SetProperty(ref type, value);
+            get => id;
+            set => SetProperty(ref id, value);
         }
 
         /// <summary>

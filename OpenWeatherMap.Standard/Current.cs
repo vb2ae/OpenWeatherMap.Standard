@@ -31,9 +31,20 @@ namespace OpenWeatherMap.Standard
         private const string WEATHER_REQUESTS_ROOT = "/weather";
 
         /// <summary>
+        /// the root url where the icons are located
+        /// </summary>
+        private const string ICON_DATA_ROOT = "openweathermap.org/img/wn";
+
+        /// <summary>
         /// the rest service to perform our web calls
         /// </summary>
         public IRestService Service { get; set; }
+
+        /// <summary>
+        /// the root url where the icons are located
+        /// </summary>
+        private string IconDataRootUrl => $"http{(UseHTTPS ? "s" : "")}://{ICON_DATA_ROOT}";
+
 
         private string appId;
         /// <summary>
@@ -202,7 +213,7 @@ namespace OpenWeatherMap.Standard
             if (string.IsNullOrEmpty(zipCode))
                 throw new ArgumentNullException("zipCode", "zipCode can NOT be null or empty string");
             var url = GetWeatherDataByZipUrl(zipCode, countryCode);
-            return await Service.GetAsync(url);
+            return await Service.GetAsync(url, IconDataRootUrl);
         }
 
         /// <summary>
@@ -216,7 +227,7 @@ namespace OpenWeatherMap.Standard
             if (string.IsNullOrEmpty(zipCode))
                 throw new ArgumentNullException("zipCode", "zipCode can NOT be null or empty string");
             var url = GetWeatherDataByZipUrl(zipCode, countryCode);
-            return Service.GetAsync(url);
+            return Service.GetAsync(url, IconDataRootUrl);
         }
 
         /// <summary>
@@ -230,7 +241,7 @@ namespace OpenWeatherMap.Standard
             if (string.IsNullOrEmpty(cityName))
                 throw new ArgumentNullException("cityName", "cityName can NOT be null or empty string");
             var url = GetWeatherDataByCityNameUrl(cityName, countryCode);
-            return await Service.GetAsync(url);
+            return await Service.GetAsync(url, IconDataRootUrl);
         }
 
         /// <summary>
@@ -244,7 +255,7 @@ namespace OpenWeatherMap.Standard
             if (string.IsNullOrEmpty(cityName))
                 throw new ArgumentNullException("cityName", "cityName can NOT be null or empty string");
             var url = GetWeatherDataByCityNameUrl(cityName, countryCode);
-            return Service.GetAsync(url);
+            return Service.GetAsync(url, IconDataRootUrl);
         }
 
         /// <summary>
@@ -255,7 +266,7 @@ namespace OpenWeatherMap.Standard
         public async Task<WeatherData> GetWeatherDataByCityIdAsync(int cityId)
         {
             var url = GetWeatherDataByCityIdUrl(cityId);
-            return await Service.GetAsync(url);
+            return await Service.GetAsync(url, IconDataRootUrl);
         }
 
         /// <summary>
@@ -266,7 +277,7 @@ namespace OpenWeatherMap.Standard
         public Task<WeatherData> GetWeatherDataByCityId(int cityId)
         {
             var url = GetWeatherDataByCityIdUrl(cityId);
-            return Service.GetAsync(url);
+            return Service.GetAsync(url, IconDataRootUrl);
         }
 
         /// <summary>
@@ -278,7 +289,7 @@ namespace OpenWeatherMap.Standard
         public async Task<WeatherData> GetWeatherDataByCoordinatesAsync(double lat, double lon)
         {
             var url = GetWeatherDataByCoordsUrl(lat, lon);
-            return await Service.GetAsync(url);
+            return await Service.GetAsync(url, IconDataRootUrl);
         }
 
         /// <summary>
@@ -290,7 +301,7 @@ namespace OpenWeatherMap.Standard
         public Task<WeatherData> GetWeatherDataByCoordinates(double lat, double lon)
         {
             var url = GetWeatherDataByCoordsUrl(lat, lon);
-            return Service.GetAsync(url);
+            return Service.GetAsync(url, IconDataRootUrl);
         }
 
         /// <summary>

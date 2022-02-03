@@ -15,7 +15,8 @@ namespace OpenWeatherMap.Standard.Interfaces
         /// get data and deserialize them
         /// </summary>
         /// <param name="url">the url to perform the request</param>
+        /// <param name="iconDataBaseUrl">the base url to the icon's data</param>
         /// <returns>WeatherData object</returns>
-        Task<WeatherData> GetAsync(string url);
+        Task<WeatherData> GetAsync(string url, string iconDataBaseUrl);
     }
 }

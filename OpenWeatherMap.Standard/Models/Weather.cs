@@ -10,6 +10,7 @@ namespace OpenWeatherMap.Standard.Models
     {
         private int id;
         private string main, desc, icon;
+        private byte[] iconData;
 
         /// <summary>
         /// id
@@ -45,6 +46,12 @@ namespace OpenWeatherMap.Standard.Models
         {
             get => icon;
             set => SetProperty(ref icon, value);
+        }
+
+        public byte[] IconData
+        {
+            get => iconData;
+            set => SetProperty(ref iconData, value);
         }
     }
 

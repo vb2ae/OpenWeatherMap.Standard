@@ -26,7 +26,7 @@ namespace OpenWeatherMap.Standard.Core.Test
         public void TestCloudy()
         {
             var fake = A.Fake<IRestService>();
-            A.CallTo(() => fake.GetAsync("https://api.openweathermap.org/data/2.5/weather?id=2172797&units=Standard&appid=YOUR_API_KEY&lang=en", "https://openweathermap.org/img/wn/")).Returns(Task.FromResult(expected));
+            A.CallTo(() => fake.GetAsync("https://api.openweathermap.org/data/2.5/weather?id=2172797&units=Standard&appid=YOUR_API_KEY&lang=en", "https://openweathermap.org/img/wn/", true)).Returns(Task.FromResult(expected));
             var weather = new Current(Consts.API_KEY, fake, Enums.WeatherUnits.Standard, Languages.English);
             var res = weather.GetWeatherDataByCityIdAsync(2172797).Result;
             string actual = res.Weathers[0].Description;

@@ -1,6 +1,8 @@
 ﻿using System;
 using System.IO;
+using System.Linq;
 using System.Threading.Tasks;
+using OpenWeatherMap.Standard.Enums;
 using OpenWeatherMap.Standard.Models;
 
 namespace OpenWeatherMap.Standard.Sample
@@ -10,8 +12,16 @@ namespace OpenWeatherMap.Standard.Sample
         private static void Main(string[] args)
         {
             var key = "USE_YOUR_KEY_PLEASE";
-            var current = new Current(key);
+            var current = new Current(key)
+            {
+                Languages = Languages.German,
+                FetchIcons = true,
+                ForecastTimestamps = 5
+            };
+
             WeatherData data = null;
+            ForecastData forecastData = null;
+
             var getWeather = Task.Run(async () => { data = await current.GetWeatherDataByZipAsync("32927", "us"); });
             getWeather.Wait();
             Console.WriteLine(
@@ -46,6 +56,20 @@ namespace OpenWeatherMap.Standard.Sample
             });
             saveIcon.Wait();
             
+            var getForecastWeather = Task.Run(async () =>
+            {
+                forecastData = await current.GetForecastDataByCityNameAsync("Schnelsen");
+            });
+            getForecastWeather.Wait();
+            foreach (var weatherDayInfo in forecastData.WeatherData.Select(a => new
+                     {
+                         a.WeatherDayInfo,
+                         a.AcquisitionDateTime
+                     }))
+                Console.WriteLine(
+                    $"[forecast]: Forecast for Schnelsen, Germany at {weatherDayInfo.AcquisitionDateTime}, maximum temp: {weatherDayInfo.WeatherDayInfo.MaximumTemperature}, minimum temp: {weatherDayInfo.WeatherDayInfo.MinimumTemperature}");
+
+            var forecastDataSync = current.GetForecastDataByCityName("schnelsen");
 
             Console.ReadLine();
         }

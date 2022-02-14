@@ -14,6 +14,7 @@ namespace OpenWeatherMap.Standard.Models
         private float message;
         private string country;
         private DateTime sunrise, sunset;
+        private char partOfDay;
 
         /// <summary>
         /// type
@@ -41,6 +42,7 @@ namespace OpenWeatherMap.Standard.Models
             get => message;
             set => SetProperty(ref message, value);
         }
+
         /// <summary>
         /// country code
         /// </summary>
@@ -48,6 +50,18 @@ namespace OpenWeatherMap.Standard.Models
         {
             get => country;
             set => SetProperty(ref country, value);
+        }
+
+        /// <summary>
+        /// part of day
+        /// <para />
+        /// Only filled by forecast-api.
+        /// </summary>
+        [JsonProperty("pod")]
+        public char PartOfDay
+        {
+            get => partOfDay;
+            set => SetProperty(ref partOfDay, value);
         }
 
         /// <summary>

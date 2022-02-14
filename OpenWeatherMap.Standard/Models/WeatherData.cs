@@ -12,8 +12,9 @@ namespace OpenWeatherMap.Standard.Models
     [Serializable]
     public class WeatherData : BaseModel
     {
-        private string _base, name;
+        private string @base, name;
         private int vis, id, statusCode;
+        private double pop;
 
         private Coordinates coords;
         private Weather[] weathers;
@@ -51,8 +52,20 @@ namespace OpenWeatherMap.Standard.Models
         [JsonProperty("base")]
         public string Base
         {
-            get => _base;
-            set => SetProperty(ref _base, value);
+            get => @base;
+            set => SetProperty(ref @base, value);
+        }
+
+        /// <summary>
+        /// Probability of precipitation
+        /// <para />
+        /// Only filled by forecast-api.
+        /// </summary>
+        [JsonProperty("pop")]
+        public double Precipitation
+        {
+            get => pop;
+            set => SetProperty(ref pop, value);
         }
 
         /// <summary>
@@ -112,7 +125,7 @@ namespace OpenWeatherMap.Standard.Models
         }
 
         /// <summary>
-        /// acquisiton datatime
+        /// acquisition datetime
         /// </summary>
         [JsonConverter(typeof(UnixDateTimeConverter)), JsonProperty("dt")]
         public DateTime AcquisitionDateTime

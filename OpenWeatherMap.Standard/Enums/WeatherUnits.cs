@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace OpenWeatherMap.Standard.Enums
+﻿namespace OpenWeatherMap.Standard.Enums
 {
     /// <summary>
-    /// weather units enum
+    ///     weather units enum
     /// </summary>
     public enum WeatherUnits
     {

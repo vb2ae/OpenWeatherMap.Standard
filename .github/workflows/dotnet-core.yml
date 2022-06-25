@@ -16,7 +16,7 @@ jobs:
     - name: Setup .NET Core
       uses: actions/setup-dotnet@v1
       with:
-        dotnet-version: 5.0.101
+        dotnet-version: 6.0.301
     - name: Install dependencies
       run: dotnet restore
     - name: Build
@@ -25,5 +25,5 @@ jobs:
       uses: actions/upload-artifact@v1.0.0
       with:
         name: published_nuget
-        path: OpenWeatherMap.Standard/bin/Release/OpenWeatherMap.Standard.1.6.0.nupkg
+        path: OpenWeatherMap.Standard/bin/Release/OpenWeatherMap.Standard.1.7.0.nupkg
 

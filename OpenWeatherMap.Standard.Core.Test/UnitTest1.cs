@@ -23,7 +23,7 @@ namespace OpenWeatherMap.Standard.Core.Test
         public void TestByZipCode()
         {
             var fake = A.Fake<IRestService>();
-            A.CallTo(() => fake.GetAsync("https://api.openweathermap.org/data/2.5/weather?zip=32927,US&units=Standard&appid=YOUR_API_KEY&lang=en", "https://openweathermap.org/img/wn/", true)).Returns(Task.FromResult(expected));
+            A.CallTo(() => fake.GetAsync(@"https://api.openweathermap.org/data/2.5/weather?zip=32927,US&units=Standard&appid=YOUR_API_KEY&lang=en", "https://openweathermap.org/img/wn", false)).Returns(Task.FromResult(expected));
             var weather = new Current(Consts.API_KEY, fake, Enums.WeatherUnits.Standard, Languages.English);
             var res = weather.GetWeatherDataByZipAsync("32927", "US").Result;
             Assert.AreEqual(expected.Coordinates.Latitude, res.Coordinates.Latitude);

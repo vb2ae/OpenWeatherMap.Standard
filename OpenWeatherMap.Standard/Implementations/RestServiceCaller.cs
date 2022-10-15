@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Net.Http;
@@ -20,7 +21,7 @@ namespace OpenWeatherMap.Standard.Implementations
         ///     the HttpClient to be used
         /// </summary>
         private static HttpClient HttpClient =>
-            _httpClient ?? (_httpClient = new HttpClient {Timeout = TimeSpan.FromSeconds(10)});
+            _httpClient ?? (_httpClient = new HttpClient { Timeout = TimeSpan.FromSeconds(10) });
 
         /// <summary>
         ///     get weather data and deserialize them
@@ -114,6 +115,28 @@ namespace OpenWeatherMap.Standard.Implementations
             try
             {
                 return await HttpClient.GetByteArrayAsync(iconUrl);
+            }
+#if DEBUG
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex.Message);
+                return null;
+            }
+#else
+            catch
+            {
+                return null;
+            }
+#endif
+        }
+
+        public async Task<List<GeoLocation>> GetGeoLocationAsync(string url)
+        {
+            try
+            {
+                var json = await HttpClient.GetStringAsync(url);
+                var geoLocations = JsonConvert.DeserializeObject<List<GeoLocation>>(json);
+                return geoLocations;
             }
 #if DEBUG
             catch (Exception ex)

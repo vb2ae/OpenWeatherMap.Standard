@@ -11,8 +11,7 @@ namespace OpenWeatherMap.Standard.Sample
     {
         private static async Task Main(string[] args)
         {
-           // var key = "USE_YOUR_KEY_PLEASE";
-            var key = "148ff5a63e92f025856f0912aacd4b80";
+            var key = "USE_YOUR_KEY_PLEASE";
             var current = new Current(key)
             {
                 Languages = Languages.German,

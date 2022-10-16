@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using OpenWeatherMap.Standard.Enums;
 using OpenWeatherMap.Standard.Extensions;
@@ -213,6 +214,11 @@ namespace OpenWeatherMap.Standard
         private string GetWeatherOrForecastDataByCityIdUrl(int cityId, bool getForecastUrl)
         {
             return GetUrl($"id={cityId}", getForecastUrl);
+        }
+
+        private string GetGeoLocationUrl(string city, string state, string country)
+        {
+            return $"http://api.openweathermap.org/geo/1.0/direct?q={city},{state},{country}&limit=5&appid={AppId}";
         }
 
         /// <summary>
@@ -486,5 +492,11 @@ namespace OpenWeatherMap.Standard
         }
 
         #endregion
+
+        public async Task<List<GeoLocation>> GetGeoLocationAsync(string city, string state, string country)
+        {
+            var url = GetGeoLocationUrl(city, state, country);
+            return await Service.GetGeoLocationAsync(url);
+        }
     }
 }

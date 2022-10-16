@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using OpenWeatherMap.Standard.Models;
 
 namespace OpenWeatherMap.Standard.Interfaces
@@ -25,5 +26,10 @@ namespace OpenWeatherMap.Standard.Interfaces
         /// <param name="fetchIconData">whether to fetch icon's data or not</param>
         /// <returns><see cref="ForecastData" /> object</returns>
         Task<ForecastData> GetForecastAsync(string url, string iconDataBaseUrl = "https://openweathermap.org/img/wn", bool fetchIconData = false);
+
+        /// <summary>
+        /// Get cordinates of a city
+        /// </summary>
+        Task<List<GeoLocation>> GetGeoLocationAsync(string url);
     }
 }

@@ -9,7 +9,7 @@ namespace OpenWeatherMap.Standard.Sample
 {
     internal class Program
     {
-        private static void Main(string[] args)
+        private static async Task Main(string[] args)
         {
             var key = "USE_YOUR_KEY_PLEASE";
             var current = new Current(key)
@@ -70,7 +70,12 @@ namespace OpenWeatherMap.Standard.Sample
                     $"[forecast]: Forecast for Schnelsen, Germany at {weatherDayInfo.AcquisitionDateTime}, maximum temp: {weatherDayInfo.WeatherDayInfo.MaximumTemperature}, minimum temp: {weatherDayInfo.WeatherDayInfo.MinimumTemperature}");
 
             var forecastDataSync = current.GetForecastDataByCityName("schnelsen");
+            var geolocations = await current.GetGeoLocationAsync("titusville", "fl", "usa");
+            foreach (var location in geolocations)
+            {
 
+                Console.WriteLine($"{location.name},  {location.lat}, {location.lon}");
+            }
             Console.ReadLine();
         }
     }

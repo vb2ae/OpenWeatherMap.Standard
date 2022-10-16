@@ -16,10 +16,10 @@ namespace OpenWeatherMap.Standard.MVC.Sample
 {
     public class Startup
     {
-        private readonly IHostingEnvironment hostingEnvironment;
+        private readonly IWebHostEnvironment hostingEnvironment;
 
 
-        public Startup(IHostingEnvironment env, IConfiguration config)
+        public Startup(IWebHostEnvironment env, IConfiguration config)
         {
             var builder = new ConfigurationBuilder()
                 .SetBasePath(env.ContentRootPath)

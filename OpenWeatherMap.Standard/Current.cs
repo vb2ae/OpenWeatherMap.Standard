@@ -498,5 +498,18 @@ namespace OpenWeatherMap.Standard
             var url = GetGeoLocationUrl(city, state, country);
             return await Service.GetGeoLocationAsync(url);
         }
+        
+        public async Task<AirPollution> GetAirPollution(float lat, float lon)
+        {
+            {
+                var url = GetAirPollutionUrl(lat, lon);
+                return await Service.GetAirPollutionAsync(url);
+            }
+        }
+        
+        private string GetAirPollutionUrl(float lat, float lon)
+        {
+            return $"https://api.openweathermap.org/data/2.5/air_pollution?lat={lat}&lon={lon}&appid={AppId}";
+        }
     }
 }

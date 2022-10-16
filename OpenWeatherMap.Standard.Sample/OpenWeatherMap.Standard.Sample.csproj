@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\OpenWeatherMap.Standard.Core.Test\OpenWeatherMap.Standard.Core.Test.csproj" />
     <ProjectReference Include="..\OpenWeatherMap.Standard\OpenWeatherMap.Standard.csproj" />
   </ItemGroup>
 

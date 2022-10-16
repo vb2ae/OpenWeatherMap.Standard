@@ -76,6 +76,8 @@ namespace OpenWeatherMap.Standard.Sample
 
                 Console.WriteLine($"{location.name},  {location.lat}, {location.lon}");
             }
+
+            var airPollution = await current.GetAirPollution(geolocations[0].lat, geolocations[0].lon);
             Console.ReadLine();
         }
     }

@@ -3,14 +3,14 @@
 @{
     ViewData["Title"] = "Current weather conditions";
 }
-@{
-    var weatherIconUrl = $"https://openweathermap.org/img/wn/{@Model.Weathers.First().Icon}.png";
-}
+
 <div class="text-center">
     <h1 class="display-4">Current weather conditions</h1>
 </div>
 @if (@Model != null)
 {
+    var weatherIconUrl = $"https://openweathermap.org/img/wn/{@Model.Weathers.First().Icon}.png";
+
     <div style="width:100%; background-color: lightblue; height: 300px; text-align: center; vertical-align: center;">
         <img src="@weatherIconUrl" alt="@Model.Weathers.First().Description" style="width:250px; height: 250px;"/>
     </div>

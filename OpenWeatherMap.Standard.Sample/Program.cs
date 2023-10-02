@@ -24,8 +24,8 @@ namespace OpenWeatherMap.Standard.Sample
                 ForecastTimestamps = 5
             };
 
-            WeatherData data = null;
-            ForecastData forecastData = null;
+            WeatherData data;
+            ForecastData forecastData;
 
             data = await current.GetWeatherDataByZipAsync("32927", "us");
 
@@ -46,9 +46,14 @@ namespace OpenWeatherMap.Standard.Sample
 
 
             data = await current.GetWeatherDataByCoordinatesAsync(-33.865143, 151.209900);
-
-            Console.WriteLine($"[lat, lon]: current temperature in Sydney is: {data.WeatherDayInfo.Temperature}");
-
+            if (data != null)
+            {
+                Console.WriteLine($"[lat, lon]: current temperature in Sydney is: {data.WeatherDayInfo.Temperature}");
+            }
+            else
+            {
+                Console.WriteLine("Unable to get weather in Sydney");
+            }
 
             await using var fs = new FileStream($"{data?.Weathers[0]?.Icon}.png", FileMode.Create);
             await fs.WriteAsync(data?.Weathers[0]?.IconData);
@@ -66,7 +71,10 @@ namespace OpenWeatherMap.Standard.Sample
                     $"[forecast]: Forecast for Schnelsen, Germany at {weatherDayInfo.AcquisitionDateTime}, maximum temp: {weatherDayInfo.WeatherDayInfo.MaximumTemperature}, minimum temp: {weatherDayInfo.WeatherDayInfo.MinimumTemperature}");
 
             var forecastDataSync = current.GetForecastDataByCityName("schnelsen");
-            Console.WriteLine(System.Text.Json.JsonSerializer.Serialize(forecastDataSync));
+            foreach (var forecast in forecastDataSync.WeatherData)
+            {
+                Console.WriteLine(forecast.Weathers.First().Description);
+            }
             var geolocations = await current.GetGeoLocationAsync("titusville", "fl", "usa");
             foreach (var location in geolocations)
             {

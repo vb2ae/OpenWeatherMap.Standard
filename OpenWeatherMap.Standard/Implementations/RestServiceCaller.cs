@@ -171,5 +171,27 @@ namespace OpenWeatherMap.Standard.Implementations
             }
 #endif
         }
+        
+        public async Task<AirPollution> GetAirPollutionAsync(string url)
+        {
+            try
+            {
+                var json = await HttpClient.GetStringAsync(url);
+                var airPollution = JsonConvert.DeserializeObject<AirPollution>(json);
+                return airPollution;
+            }
+#if DEBUG
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex.Message);
+                return null;
+            }
+#else
+            catch
+            {
+                return null;
+            }
+#endif      
+        }
     }
 }

@@ -10,6 +10,11 @@ namespace OpenWeatherMap.Standard.Interfaces
     public interface IRestService
     {
         /// <summary>
+        /// Get air pollution data and deserialize them
+        /// </summary>
+        Task<AirPollution> GetAirPollutionAsync(string url);
+
+        /// <summary>
         ///     get weather data and deserialize them
         /// </summary>
         /// <param name="url">the url to perform the request</param>

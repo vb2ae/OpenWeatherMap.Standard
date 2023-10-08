@@ -1,12 +1,12 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using OpenWeatherMap.Standard.Interfaces;
+using OpenWeatherMap.Standard.Models;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
-using Newtonsoft.Json;
-using OpenWeatherMap.Standard.Interfaces;
-using OpenWeatherMap.Standard.Models;
 
 namespace OpenWeatherMap.Standard.Implementations
 {
@@ -43,7 +43,12 @@ namespace OpenWeatherMap.Standard.Implementations
                 return wd;
             }
 #if DEBUG
-            catch (Exception ex)
+            catch (HttpRequestException ex)
+            {
+                Debug.WriteLine(ex.Message);
+                return null;
+            }
+            catch (JsonReaderException ex)
             {
                 Debug.WriteLine(ex.Message);
                 return null;
@@ -76,7 +81,12 @@ namespace OpenWeatherMap.Standard.Implementations
                 return fd;
             }
 #if DEBUG
-            catch (Exception ex)
+            catch (HttpRequestException ex)
+            {
+                Debug.WriteLine(ex.Message);
+                return null;
+            }
+            catch (JsonReaderException ex)
             {
                 Debug.WriteLine(ex.Message);
                 return null;
@@ -117,7 +127,12 @@ namespace OpenWeatherMap.Standard.Implementations
                 return await HttpClient.GetByteArrayAsync(iconUrl);
             }
 #if DEBUG
-            catch (Exception ex)
+            catch (HttpRequestException ex)
+            {
+                Debug.WriteLine(ex.Message);
+                return null;
+            }
+            catch (JsonReaderException ex)
             {
                 Debug.WriteLine(ex.Message);
                 return null;
@@ -139,7 +154,12 @@ namespace OpenWeatherMap.Standard.Implementations
                 return geoLocations;
             }
 #if DEBUG
-            catch (Exception ex)
+            catch (HttpRequestException ex)
+            {
+                Debug.WriteLine(ex.Message);
+                return null;
+            }
+            catch (JsonReaderException ex)
             {
                 Debug.WriteLine(ex.Message);
                 return null;

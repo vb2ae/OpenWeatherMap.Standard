@@ -4,10 +4,14 @@
     <OutputType>Exe</OutputType>
     <TargetFramework>net6.0</TargetFramework>
     <StartupObject>OpenWeatherMap.Standard.Sample.Program</StartupObject>
+    <UserSecretsId>10779874-59e9-44f5-b774-903b95c6eb98</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\OpenWeatherMap.Standard.Core.Test\OpenWeatherMap.Standard.Core.Test.csproj" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="6.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\OpenWeatherMap.Standard\OpenWeatherMap.Standard.csproj" />
   </ItemGroup>
 

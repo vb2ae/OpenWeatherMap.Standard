@@ -1,17 +1,10 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using OpenWeatherMap.Standard.MVC.Sample.Models;
 using IConfiguration = Microsoft.Extensions.Configuration.IConfiguration;
-using IHostingEnvironment = Microsoft.AspNetCore.Hosting.IHostingEnvironment;
-
 namespace OpenWeatherMap.Standard.MVC.Sample
 {
     public class Startup
@@ -25,9 +18,11 @@ namespace OpenWeatherMap.Standard.MVC.Sample
                 .SetBasePath(env.ContentRootPath)
                 .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
                 .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)
-                .AddEnvironmentVariables(); 
+                .AddEnvironmentVariables();
             hostingEnvironment = env;
+
             Configuration = config;
+
         }
 
         public IConfiguration Configuration { get; }
@@ -35,7 +30,9 @@ namespace OpenWeatherMap.Standard.MVC.Sample
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.Configure<Configuration>(Configuration);
+
+            services.Configure<IConfiguration>(Configuration);
+            services.AddSingleton<IApiSettings>(new ApiSettings { ApiKey = Configuration["Weather:ApiKey"] });
             services.AddControllersWithViews();
         }
 

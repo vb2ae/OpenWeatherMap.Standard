@@ -83,6 +83,16 @@ namespace OpenWeatherMap.Standard.Sample
             }
 
             var airPollution = await current.GetAirPollution(geolocations[0].lat, geolocations[0].lon);
+
+            if (airPollution != null)
+            {
+                Console.WriteLine(airPollution.list.First().main.AirQualityIndex);
+            }
+            else
+            {
+                Console.WriteLine("Error getting air pollution");
+            }
+
             Console.ReadLine();
         }
     }

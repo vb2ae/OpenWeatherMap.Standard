@@ -131,7 +131,7 @@ namespace OpenWeatherMap.Standard
         public WeatherUnits Units { get; set; } = WeatherUnits.Metric;
 
         /// <summary>
-        ///     Translation is only applied for the "description" field.
+        ///     Translation is applied for the "city name" and "description" fields.
         ///     <para />
         ///     its default is English
         /// </summary>

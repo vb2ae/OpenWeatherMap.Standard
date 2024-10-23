@@ -11,8 +11,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpenWeatherMap.Standard.Cor
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpenWeatherMap.Standard.MVC.Sample", "OpenWeatherMap.Standard.MVC.Sample\OpenWeatherMap.Standard.MVC.Sample.csproj", "{EAB050C0-2E42-472C-B3D3-6715E2D8F8CE}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpenWeatherMap.Standard.Avalonia.Sample", "OpenWeatherMap.Standard.Avalonia.Sample\OpenWeatherMap.Standard.Avalonia.Sample.csproj", "{6059BC17-6335-4B24-93D4-2B852FC4013D}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenWeatherMap.Avalonia.Sample", "OpenWeatherMap.Avalonia.Sample\OpenWeatherMap.Avalonia.Sample.csproj", "{34ACE38B-81E5-4A52-9BA8-6E55903B0BBA}"
 EndProject
 Global

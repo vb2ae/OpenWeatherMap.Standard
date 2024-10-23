@@ -6,7 +6,6 @@ on:
   pull_request:
     branches: [ master ]
 env:
-  servicelocator_sln : "openweathermap.standard.sln"
   package_feed: "https://nuget.pkg.github.com/vb2ae/index.json"
   nuget_folder: "\\packages"
 
@@ -29,10 +28,10 @@ jobs:
     - name: Test
       run: dotnet test --configuration Release --no-build --verbosity normal
     - name: Pack Nuget
-      run: dotnet pack ${{env.servicelocator_sln}} --output ${{env.nuget_folder}}
+      run: dotnet pack OpenWeatherMap.Standard/OpenWeatherMap.Standard.csproj --output ${{env.nuget_folder}}
     - name: Upload Artifact
       uses: actions/upload-artifact@v4
       with:
         name: published_nuget
-        path: OpenWeatherMap.Standard/bin/Release/OpenWeatherMap.Standard.2.1.0.nupkg
+        path: ${{env.nuget_folder}}
 

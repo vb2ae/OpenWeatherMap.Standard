@@ -5,3 +5,5 @@ queries:
     uses: security-and-quality
   - name: Queries from the default suite, plus lower severity and precision queries
     uses: security-extended
+paths-ignore: 
+  - 'OpenWeatherMap.Standard.MVC.Sample/obj/Debug/net8.0/generated'

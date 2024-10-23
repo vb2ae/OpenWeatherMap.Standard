@@ -1,5 +1,5 @@
-﻿using System;
-using OpenWeatherMap.Standard.Attributes;
+﻿using OpenWeatherMap.Standard.Attributes;
+using System;
 
 namespace OpenWeatherMap.Standard.Extensions
 {
@@ -11,7 +11,7 @@ namespace OpenWeatherMap.Standard.Extensions
             var type = value.GetType();
             var fieldInfo = type.GetField(value.ToString());
 
-            if (fieldInfo.GetCustomAttributes(typeof(LangValue), false) is LangValue[] attrs && attrs.Length > 0)
+            if (fieldInfo?.GetCustomAttributes(typeof(LangValue), false) is LangValue[] attrs && attrs.Length > 0)
                 stringValue = attrs[0].Value;
 
             return stringValue;

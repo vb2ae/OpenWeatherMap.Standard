@@ -94,6 +94,7 @@ namespace OpenWeatherMap.Standard.Sample
                 Console.WriteLine("Error getting air pollution");
             }
 
+
             Console.ReadLine();
         }
     }

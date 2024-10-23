@@ -13,6 +13,8 @@ namespace OpenWeatherMap.Standard.Models
         public City()
         {
             coordinates = new Coordinates();
+            name = string.Empty;
+            country = string.Empty;
         }
         private Coordinates coordinates;
         private int id, timezone;

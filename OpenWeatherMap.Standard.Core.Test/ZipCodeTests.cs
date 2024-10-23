@@ -1,10 +1,10 @@
-using System.Threading.Tasks;
 using FakeItEasy;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Newtonsoft.Json;
 using OpenWeatherMap.Standard.Enums;
 using OpenWeatherMap.Standard.Interfaces;
 using OpenWeatherMap.Standard.Models;
+using System.Threading.Tasks;
 
 namespace OpenWeatherMap.Standard.Core.Test
 {
@@ -16,7 +16,7 @@ namespace OpenWeatherMap.Standard.Core.Test
 
         public ZipCodeTests()
         {
-            expected = JsonConvert.DeserializeObject<WeatherData>(expectedJson);
+            expected = JsonConvert.DeserializeObject<WeatherData>(expectedJson) ?? new WeatherData();
         }
 
         [TestMethod()]

@@ -19,7 +19,9 @@ namespace OpenWeatherMap.Standard.Models
             snow = new Snow();
             dayInfo = new DayInfo();
             weatherDayInfo = new WeatherDayInfo();
-
+            @base = string.Empty;
+            name = string.Empty;
+            weathers = new Weather[0];
         }
         private string @base, name;
         private int vis, id, statusCode;

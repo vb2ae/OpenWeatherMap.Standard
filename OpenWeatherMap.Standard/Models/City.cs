@@ -1,6 +1,6 @@
-﻿using System;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
+using System;
 
 namespace OpenWeatherMap.Standard.Models
 {
@@ -10,6 +10,10 @@ namespace OpenWeatherMap.Standard.Models
     [Serializable]
     public class City : BaseModel
     {
+        public City()
+        {
+            coordinates = new Coordinates();
+        }
         private Coordinates coordinates;
         private int id, timezone;
         private string name, country;

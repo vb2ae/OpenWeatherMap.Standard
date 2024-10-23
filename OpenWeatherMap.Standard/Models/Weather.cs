@@ -8,6 +8,13 @@ namespace OpenWeatherMap.Standard.Models
     [Serializable]
     public class Weather : BaseModel
     {
+        public Weather()
+        {
+            main = string.Empty;
+            desc = string.Empty;
+            icon = string.Empty;
+            iconData = new byte[0];
+        }
         private int id;
         private string main, desc, icon;
         private byte[] iconData;

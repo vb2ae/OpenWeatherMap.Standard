@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
+using System;
 
 namespace OpenWeatherMap.Standard.Models
 {
@@ -12,6 +10,17 @@ namespace OpenWeatherMap.Standard.Models
     [Serializable]
     public class WeatherData : BaseModel
     {
+        public WeatherData()
+        {
+            wind = new Wind();
+            coords = new Coordinates();
+            clouds = new Clouds();
+            rain = new Rain();
+            snow = new Snow();
+            dayInfo = new DayInfo();
+            weatherDayInfo = new WeatherDayInfo();
+
+        }
         private string @base, name;
         private int vis, id, statusCode;
         private double pop;
@@ -161,7 +170,7 @@ namespace OpenWeatherMap.Standard.Models
             get => name;
             set => SetProperty(ref name, value);
         }
-        
+
         /// <summary>
         /// response code
         /// </summary>

@@ -89,7 +89,7 @@ namespace OpenWeatherMap.Avalonia.Sample.ViewModels
 
         public MainWindowViewModel(IApiSettings apiSettings)
         {
-            var current = new Current(apiSettings.ApiKey ?? "DEMO_KEY")
+            var current = new Current(apiSettings.ApiKey)
             {
                 Languages = Languages.English,
                 FetchIcons = true,

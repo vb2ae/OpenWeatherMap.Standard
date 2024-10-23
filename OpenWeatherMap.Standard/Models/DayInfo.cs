@@ -10,6 +10,10 @@ namespace OpenWeatherMap.Standard.Models
     [Serializable]
     public class DayInfo : BaseModel
     {
+        public DayInfo()
+        {
+            country = string.Empty;
+        }
         private int type, id;
         private float message;
         private string country;

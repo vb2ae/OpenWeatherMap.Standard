@@ -1,13 +1,15 @@
 ﻿using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace OpenWeatherMap.Standard.Models
 {
 
     public class AirPollution
     {
+        public AirPollution()
+        {
+            coord = new Coord();
+            list = new List[0];
+        }
         public Coord coord { get; set; }
         public List[] list { get; set; }
     }
@@ -20,6 +22,11 @@ namespace OpenWeatherMap.Standard.Models
 
     public class List
     {
+        public List()
+        {
+            main = new AirQuality();
+            components = new Components();
+        }
         [JsonProperty("Main")]
         public AirQuality main { get; set; }
         public Components components { get; set; }

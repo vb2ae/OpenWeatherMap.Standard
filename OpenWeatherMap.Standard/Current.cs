@@ -40,7 +40,7 @@ namespace OpenWeatherMap.Standard
         private const string ICON_DATA_ROOT = "openweathermap.org/img/wn";
 
 
-        private string appId;
+        private string appId = string.Empty;
 
         /// <summary>
         ///     default constructor that uses the default IRestService implementation

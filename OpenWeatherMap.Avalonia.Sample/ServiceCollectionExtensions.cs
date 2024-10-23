@@ -12,7 +12,7 @@ namespace OpenWeatherMap.Avalonia.Sample
             var config = new ConfigurationBuilder()
              .AddUserSecrets<Program>()
              .Build();
-            string key = config["Weather:ApiKey"];
+            string key = config["Weather:ApiKey"] ?? string.Empty;
             collection.AddSingleton<IApiSettings>(new ApiSettings() { ApiKey = key });
             collection.AddTransient<MainWindowViewModel>();
         }

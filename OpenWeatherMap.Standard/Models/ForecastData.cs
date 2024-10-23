@@ -1,5 +1,5 @@
-﻿using System;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
+using System;
 
 namespace OpenWeatherMap.Standard.Models
 {
@@ -9,6 +9,11 @@ namespace OpenWeatherMap.Standard.Models
     [Serializable]
     public class ForecastData : BaseModel
     {
+        public ForecastData()
+        {
+            city = new City();
+            weatherData = new WeatherData[0];
+        }
         private City city;
         private int cnt, statusCode;
         private WeatherData[] weatherData;

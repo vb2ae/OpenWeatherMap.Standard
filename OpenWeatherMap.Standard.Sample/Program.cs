@@ -17,7 +17,7 @@ namespace OpenWeatherMap.Standard.Sample
                              .Build();
             var key = config["Weather:ApiKey"];
 
-            var current = new Current(key)
+            var current = new Current(key ?? "DEMO_KEY")
             {
                 Languages = Languages.German,
                 FetchIcons = true,
@@ -26,13 +26,14 @@ namespace OpenWeatherMap.Standard.Sample
 
             WeatherData data;
             ForecastData forecastData;
-
+            current.Units = WeatherUnits.Imperial;
             data = await current.GetWeatherDataByZipAsync("32927", "us");
 
 
             Console.WriteLine(
                 $"[zip code]: current temperature in area zip-coded 32927 US is: {data.WeatherDayInfo.Temperature}");
 
+            current.Units = WeatherUnits.Metric;
 
             data = await current.GetWeatherDataByCityNameAsync("berlin", "de");
 
@@ -92,6 +93,7 @@ namespace OpenWeatherMap.Standard.Sample
             {
                 Console.WriteLine("Error getting air pollution");
             }
+
 
             Console.ReadLine();
         }

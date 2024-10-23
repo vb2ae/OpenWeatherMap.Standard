@@ -1,11 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using OpenWeatherMap.Standard.Enums;
+﻿using OpenWeatherMap.Standard.Enums;
 using OpenWeatherMap.Standard.Extensions;
 using OpenWeatherMap.Standard.Implementations;
 using OpenWeatherMap.Standard.Interfaces;
 using OpenWeatherMap.Standard.Models;
+using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace OpenWeatherMap.Standard
 {
@@ -40,7 +40,7 @@ namespace OpenWeatherMap.Standard
         private const string ICON_DATA_ROOT = "openweathermap.org/img/wn";
 
 
-        private string appId;
+        private string appId = string.Empty;
 
         /// <summary>
         ///     default constructor that uses the default IRestService implementation
@@ -50,7 +50,7 @@ namespace OpenWeatherMap.Standard
         {
             if (string.IsNullOrEmpty(appId))
                 throw new ArgumentNullException(nameof(appId), "AppId must NOT be null or empty string");
-            AppId = appId;
+            this.appId = appId;
             Service = new RestServiceCaller();
         }
 
@@ -498,7 +498,7 @@ namespace OpenWeatherMap.Standard
             var url = GetGeoLocationUrl(city, state, country);
             return await Service.GetGeoLocationAsync(url);
         }
-        
+
         public async Task<AirPollution> GetAirPollution(float lat, float lon)
         {
             {
@@ -506,7 +506,7 @@ namespace OpenWeatherMap.Standard
                 return await Service.GetAirPollutionAsync(url);
             }
         }
-        
+
         private string GetAirPollutionUrl(float lat, float lon)
         {
             return $"https://api.openweathermap.org/data/2.5/air_pollution?lat={lat}&lon={lon}&appid={AppId}";

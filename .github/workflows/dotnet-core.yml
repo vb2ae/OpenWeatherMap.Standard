@@ -5,6 +5,9 @@ on:
     branches: [ master ]
   pull_request:
     branches: [ master ]
+env:
+  package_feed: "https://nuget.pkg.github.com/vb2ae/index.json"
+  nuget_folder: "\\packages"
 
 jobs:
   build:
@@ -16,14 +19,22 @@ jobs:
     - name: Setup .NET Core
       uses: actions/setup-dotnet@v4
       with:
-        dotnet-version: 8.0.X
+        dotnet-version: 8.0.x
     - name: Install dependencies
       run: dotnet restore
     - name: Build
       run: dotnet build --configuration Release --no-restore
+
+    - name: Test
+      run: dotnet test --configuration Release --no-build --verbosity normal
+    - name: Pack Nuget
+      run: dotnet pack OpenWeatherMap.Standard/OpenWeatherMap.Standard.csproj --output ${{env.nuget_folder}} /p:Version=3.0.${{ github.run_attempt }} --configuration Release
+    - name: publish Nuget Packages to GitHub
+      run: dotnet nuget push ${{env.nuget_folder}}\*.nupkg --source ${{vars.NUGET_FEED}} --api-key ${{secrets.NUGET_PACKAGE_UPLOAD}} --skip-duplicate
+      if: github.event_name != 'pull_request'
     - name: Upload Artifact
       uses: actions/upload-artifact@v4
       with:
         name: published_nuget
-        path: OpenWeatherMap.Standard/bin/Release/OpenWeatherMap.Standard.2.1.0.nupkg
+        path: ${{env.nuget_folder}}
 

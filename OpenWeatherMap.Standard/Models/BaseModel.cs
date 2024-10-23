@@ -2,8 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
-using System.Text;
-
+#nullable disable
 namespace OpenWeatherMap.Standard.Models
 {
     /// <summary>
@@ -22,7 +21,7 @@ namespace OpenWeatherMap.Standard.Models
         /// <param name="onChanged">Action to trigger</param>
         /// <returns>true if it was changed</returns>
         protected bool SetProperty<T>(ref T backingStore, T value,
-            [CallerMemberName]string propertyName = "",
+            [CallerMemberName] string propertyName = "",
             Action onChanged = null)
         {
             if (EqualityComparer<T>.Default.Equals(backingStore, value))
@@ -47,3 +46,4 @@ namespace OpenWeatherMap.Standard.Models
         #endregion
     }
 }
+#nullable enable

@@ -30,7 +30,7 @@ jobs:
     - name: Pack Nuget
       run: dotnet pack OpenWeatherMap.Standard/OpenWeatherMap.Standard.csproj --output ${{env.nuget_folder}} /p:Version=3.0.${{ github.run_attempt }} --configuration Release
     - name: publish Nuget Packages to GitHub
-      run: dotnet nuget push OpenWeatherMap.Standard\${{env.nuget_folder}}\\*.nupkg --source ${{vars.NUGET_FEED}} --api-key ${{secrets.NUGET_PACKAGE_UPLOAD}} --skip-duplicate
+      run: dotnet nuget push OpenWeatherMap.Standard\${{env.nuget_folder}}\\OpenWeatherMap.Standard.3.0.0.nupkg --source ${{vars.NUGET_FEED}} --api-key ${{secrets.NUGET_PACKAGE_UPLOAD}} --skip-duplicate
       if: github.event_name != 'pull_request'
     - name: Upload Artifact
       uses: actions/upload-artifact@v4
